@@ -1,4 +1,4 @@
-class PlayerNoteSerializer < ActiveModel::Serializer
+class EncPlayerNoteSerializer < ActiveModel::Serializer
   attributes :id
   has_one :player
   has_one :enc

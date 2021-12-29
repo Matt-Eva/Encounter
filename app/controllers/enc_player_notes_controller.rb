@@ -1,2 +1,2 @@
-class PlayerNotesController < ApplicationController
+class EncPlayerNotesController < ApplicationController
 end
