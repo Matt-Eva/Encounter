@@ -1,0 +1,2 @@
+class EncMonstersController < ApplicationController
+end

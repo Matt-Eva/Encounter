@@ -1,0 +1,2 @@
+class EncNpcsController < ApplicationController
+end

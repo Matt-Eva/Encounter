@@ -1,0 +1,2 @@
+class EncsController < ApplicationController
+end

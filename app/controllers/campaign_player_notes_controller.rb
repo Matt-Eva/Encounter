@@ -1,0 +1,2 @@
+class CampaignPlayerNotesController < ApplicationController
+end
