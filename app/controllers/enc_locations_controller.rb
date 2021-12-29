@@ -1,0 +1,2 @@
+class EncLocationsController < ApplicationController
+end

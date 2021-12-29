@@ -1,0 +1,2 @@
+class EncPlayerNotesController < ApplicationController
+end

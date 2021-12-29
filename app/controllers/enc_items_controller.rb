@@ -1,0 +1,2 @@
+class EncItemsController < ApplicationController
+end

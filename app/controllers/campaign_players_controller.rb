@@ -1,0 +1,2 @@
+class CampaignPlayersController < ApplicationController
+end
