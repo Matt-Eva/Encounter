@@ -4,12 +4,13 @@ import App from './main/App';
 import { Provider } from 'react-redux'
 import store from './store'
 import { BrowserRouter } from 'react-router-dom'
+import { UserProvider } from './context/userState'
 
 ReactDOM.render(
   <BrowserRouter>
-  <Provider store = {store}>
-    <App />
-  </Provider>
+    <UserProvider>
+      <App />
+    </UserProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
