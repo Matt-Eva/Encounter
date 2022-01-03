@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from "./home/HomePage";
 import Login from "./userAuth/Login";
 import Signup from "./userAuth/Signup";
@@ -13,7 +14,10 @@ function App() {
     fetch("/me")
     .then((response) => {
       if (response.ok){
-        response.json().then((user) => setUser(user))
+        response.json().then((user) => {
+          setUser(user)
+          navigate("/")
+        })
       } else{
         navigate("/login")
       }
