@@ -11,5 +11,9 @@ class User < ApplicationRecord
     has_many :encs, through: :campaigns
     has_many :player_notes, through: :players
 
+    #validations
     has_secure_password
+    validates :username, presence: true, uniqueness: true
+    validates :dm_name, :password, presence: true
+
 end
