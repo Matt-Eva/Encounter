@@ -1,6 +1,9 @@
-function CampaignDisplayContainer(){
+import CampaignCard from "./CampaignCard"
+
+function CampaignDisplayContainer({campaigns}){
+    const campaignList = campaigns.map(campaign => <CampaignCard key={campaign.id} campaign={campaign}/>)
     return(
-        <div>Campaign Display Container</div>
+        <div>{campaignList}</div>
     );
 }
 
