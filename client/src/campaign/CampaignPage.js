@@ -3,6 +3,9 @@ import {Row, Container, Col} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import { useContext, useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import EncounterCard from "../encounter/EncounterCard"
+
 
 
 
@@ -25,7 +28,7 @@ function CampaignPage(){
 
 
     return(
-        <Container>
+        <Container className="mw-100">
             <Row>
                 <Col>
                     Icon
@@ -40,9 +43,19 @@ function CampaignPage(){
                 </Col> 
             </Row>
             <Row>
-                <Col>
-                    <h2></h2>
+                <Col sm={4}>
+                    <h2>{campaign.name}</h2>
+                    <h5>{campaign.description}</h5>
                 </Col>
+                <Col>
+                    <h5>Status: {campaign.status}</h5>
+                </Col>
+                <Col sm={6} >
+                    <img src={campaign.image} alt="picture of campaign image" className="img-fluid"/>
+                </Col>
+            </Row>
+            <Row>
+                <EncounterCard encounters={encounters}/>
             </Row>
         </Container>
     );

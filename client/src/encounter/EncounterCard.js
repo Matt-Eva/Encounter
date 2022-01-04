@@ -1,4 +1,6 @@
-function EncounterCard(){
+function EncounterCard({encounters}){
+
+    console.log(encounters)
     return(
         <div>Encounter Card</div>
     );
