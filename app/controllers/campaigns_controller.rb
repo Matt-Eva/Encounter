@@ -1,5 +1,9 @@
 class CampaignsController < ApplicationController
 
+    def show
+        campaign = Campaign.find(params[:id])
+        render json: campaign
+
     def index
         render json: current_user.campaigns, status: :ok
     end
@@ -13,6 +17,7 @@ class CampaignsController < ApplicationController
 
     def campaign_params
         params.permit(:name, :description, :image, :status)
+
     end
 
 end
