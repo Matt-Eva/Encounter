@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from "./home/HomePage";
 import Login from "./userAuth/Login";
 import Signup from "./userAuth/Signup";
+import CampaignPage from './campaign/CampaignPage';
 import CreateCampaignPage from "./campaign/CreateCampaignPage"
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/userState"
@@ -17,7 +18,6 @@ function App() {
       if (response.ok){
         response.json().then((user) => {
           setUser(user)
-          navigate("/")
         })
       } else{
         navigate("/login")
@@ -28,7 +28,7 @@ function App() {
   return (
     <div>
       <Routes>
-
+        <Route path="campaigns/:id" element={<CampaignPage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
