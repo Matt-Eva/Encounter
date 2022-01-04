@@ -1,11 +1,12 @@
 import LogoutButton from "../userAuth/LogoutButton";
-import {Row, Container, Col} from "react-bootstrap";
+import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import { useContext, useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EncounterCard from "../encounter/EncounterCard"
-
+import CreateEncounterPage from "../encounter/CreateEncounterPage";
+import { SelectedCampaignContext } from "../context/selectedCampaignState";
 
 
 
@@ -13,6 +14,7 @@ function CampaignPage(){
     const {user} = useContext(UserContext)
     const [campaign, setCampaign] = useState({})
     const [encounters, setEncounters] = useState([])
+    const {selectedCampaign, setSelectedCampaign} = useContext(SelectedCampaignContext)
     const campaignId = useParams().id
 
     useEffect(() => {
@@ -24,11 +26,11 @@ function CampaignPage(){
             let newEncsData = encs.map(enc => enc)
             setEncounters(newEncsData)
         })
-    },[])
+    },[campaignId])
 
     //Encounter card mapping
 
-    const encounterCards = encounters.map(enc => <EncounterCard key={enc.id} id={enc.id} name={enc.name} description={enc.description} image={enc.image} notes={enc.notes} status={enc.status}/>)
+    const encounterCards = encounters?.map(enc => <EncounterCard key={enc.id} id={enc.id} name={enc.name} description={enc.description} image={enc.image} notes={enc.notes} status={enc.status}/>)
 
 
     return(
@@ -59,6 +61,7 @@ function CampaignPage(){
                 </Col>
             </Row>
             <Row>
+                <Link to="/reateencounter"><Button>Create a New Encounter</Button></Link>
                 {encounterCards}
             </Row>
         </Container>

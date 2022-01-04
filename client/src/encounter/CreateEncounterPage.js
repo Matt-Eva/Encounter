@@ -1,26 +1,48 @@
-import {Form, Button} from "react-bootstrap"
+import {Form, Button,Container, Row, Col} from "react-bootstrap"
+import {UserContext} from "../context/userState";
+import { useContext, useState } from "react";
+import LogoutButton from "../userAuth/LogoutButton";
+
 
 function CreateEncounterPage(){
+    const {user} = useContext(UserContext)
+
     return(
-        <Form style={{"width": "23rem"}}>
-            <Form.Group>
-                <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" name="username" placeholder="Enter your username here." />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Dungeon Master Name:</Form.Label>
-                <Form.Control type="text" name="dmName" placeholder="Choose your DM name. Be creative!" />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" name="password" placeholder="Enter your password here." />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Confirm Password:</Form.Label>
-                <Form.Control type="password" name="passwordConfirmation" placeholder="Confirm your password here." />
-            </Form.Group>
-            <Button variant="secondary" type="submit">Sign Up</Button>
-        </Form>
+        <Container>
+            <Row>
+                <Col>
+                    Icon
+                    Menu
+                </Col>
+                <Col>
+                   Encounter<br/>
+                   Welcome {user.dm_name}
+                </Col>
+                <Col>
+                    <LogoutButton/>
+                </Col> 
+            </Row>
+            <Row>
+                <Form style={{"width": "23rem"}}>
+                    <Form.Group>
+                        <Form.Label>Encounter Title:</Form.Label>
+                        <Form.Control type="text" name="title" placeholder="Choose your encounter's title!" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Description:</Form.Label>
+                        <Form.Control type="text" name="description" placeholder="A brief description of the encounter." />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Image:</Form.Label>
+                        <Form.Control type="image" name="location" placeholder="Where does this encounter take place?" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Notes:</Form.Label>
+                        <Form.Control type="text" name="notes" placeholder="Any checks/things to note?" />
+                    </Form.Group>
+                </Form>
+            </Row>
+        </Container>
     );
 }
 
