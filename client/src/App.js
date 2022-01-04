@@ -3,10 +3,11 @@ import HomePage from "./home/HomePage";
 import Login from "./userAuth/Login";
 import Signup from "./userAuth/Signup";
 import CampaignPage from './campaign/CampaignPage';
-import CreateCampaignPage from "./campaign/CreateCampaignPage"
+import CreateCampaignPage from './campaign/CreateCampaignPage';
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/userState"
 import {Route, Routes, useNavigate} from "react-router-dom"
+import CreateEncounterPage from './encounter/CreateEncounterPage';
 
 function App() {
   const {setUser} = useContext(UserContext)
@@ -28,7 +29,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="campaigns/:id" element={<CampaignPage/>}/>
+        <Route path="/createencounter" element={<CreateEncounterPage/>}/>
+        <Route path="/campaigns/:id" element={<CampaignPage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
