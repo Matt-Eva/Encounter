@@ -1,6 +1,11 @@
+import LogoutButton from "../userAuth/LogoutButton";
+
 function HomePage(){
     return(
-        <div>HomePage</div>
+        <div>
+        HomePage
+        <LogoutButton/>
+        </div>
     );
 }
 

@@ -1,6 +1,13 @@
+import {useNavigate} from "react-router-dom";
+
 function LogoutButton(){
+    const navigate = useNavigate()
+    function logout(){
+        fetch("/logout", {method: "DELETE"})
+        .then(()=> navigate('/login'))
+    }
     return(
-        <button>Return Button</button>
+        <button onClick={logout}>Logout</button>
     );
 }
 
