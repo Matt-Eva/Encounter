@@ -17,7 +17,7 @@
  }
 
 function Login(){
-    const {user, setUser } = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
     const [errors, setErrors] = useState(null)
     const navigate = useNavigate()
     const [form, setForm ] = useState({
