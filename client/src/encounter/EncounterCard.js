@@ -1,8 +1,27 @@
-function EncounterCard({encounters}){
+import {Button, Card, Row, Col} from "react-bootstrap";
+import {Link} from "react-router-dom"
 
-    console.log(encounters)
+
+
+function EncounterCard({id, name, description, notes, status, image}){
+
+    
     return(
-        <div>Encounter Card</div>
+        <Card style={{"height": "auto", "width": 300}}>
+            <img src={image} alt="Image of the encounter" className="card-img-top"/>
+            <Card.Title>
+                {name}
+            </Card.Title>
+            <Card.Text>
+                Status: {status}
+            </Card.Text>
+            <Row>
+                <Col>
+                    <Link to={`/encounters/${id}`}><Button>View</Button></Link>
+                    <Button>Edit</Button>
+                </Col>
+            </Row>
+        </Card>
     );
 }
 

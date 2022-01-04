@@ -26,6 +26,10 @@ function CampaignPage(){
         })
     },[])
 
+    //Encounter card mapping
+
+    const encounterCards = encounters.map(enc => <EncounterCard key={enc.id} id={enc.id} name={enc.name} description={enc.description} image={enc.image} notes={enc.notes} status={enc.status}/>)
+
 
     return(
         <Container className="mw-100">
@@ -55,7 +59,7 @@ function CampaignPage(){
                 </Col>
             </Row>
             <Row>
-                <EncounterCard encounters={encounters}/>
+                {encounterCards}
             </Row>
         </Container>
     );
