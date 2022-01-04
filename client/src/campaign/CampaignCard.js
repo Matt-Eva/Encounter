@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function CampaignCard({campaign}){
     const {description, image, name, status} = campaign
     return(
@@ -6,7 +8,7 @@ function CampaignCard({campaign}){
             <img src={image} style={{"maxWidth": "200px"}}/>
             <p style={{"maxWidth": "300px"}}>{description}</p>
             <p>Status: {status}</p>
-            <button>View</button>
+            <button><Link to={`campaigns/${campaign.id}`}>View</Link></button>
             <button>Edit</button>
             <button disabled>Delete</button>
         </div>
