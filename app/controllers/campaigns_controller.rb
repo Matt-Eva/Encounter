@@ -14,6 +14,12 @@ class CampaignsController < ApplicationController
         render json: campaign, status: :created
     end
 
+    def destroy
+        campaign = Campaign.find(params[:id])
+        campaign.destroy
+        head :no_content
+    end
+
     private
 
     def campaign_params

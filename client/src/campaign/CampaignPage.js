@@ -2,7 +2,7 @@ import LogoutButton from "../userAuth/LogoutButton";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import { useContext, useEffect, useState } from "react";
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EncounterCard from "../encounter/EncounterCard"
 import CreateEncounterPage from "../encounter/CreateEncounterPage";
@@ -61,7 +61,7 @@ function CampaignPage(){
                 </Col>
             </Row>
             <Row>
-                <Link to="/reateencounter"><Button>Create a New Encounter</Button></Link>
+                <Link to="/createencounter"><Button>Create a New Encounter</Button></Link>
                 {encounterCards}
             </Row>
         </Container>
