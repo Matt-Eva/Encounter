@@ -16,7 +16,7 @@ function EncounterCard({id, name, handleDelete, status, image}){
             </Card.Text>
             <Row>
                 <Col>
-                    <Link to={`/encounters/${id}`}><Button>View</Button></Link>
+                    <Link to={`/encounter/${id}`}><Button>View</Button></Link>
                     <Button>Edit</Button>
                     <Button onClick={() => handleDelete(id)}>Delete</Button>
                 </Col>
