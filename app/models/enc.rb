@@ -8,6 +8,6 @@ class Enc < ApplicationRecord
   has_many :npcs, through: :enc_npcs
   has_many :enc_monsters
   has_many :monsters, through: :enc_monsters
-  has_many :enc_locations
-  has_many :locations, through: :enc_locations
+  has_one :enc_location
+  has_one :location, through: :enc_location
 end
