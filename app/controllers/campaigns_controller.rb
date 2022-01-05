@@ -20,6 +20,12 @@ class CampaignsController < ApplicationController
         head :no_content
     end
 
+    def update
+        campaign = Campaign.find(params[:id])
+        campaign.update!(campaign_params)
+        render json: campaign, status: :accepted
+    end
+
     private
 
     def campaign_params
