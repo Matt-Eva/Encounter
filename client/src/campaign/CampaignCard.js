@@ -7,6 +7,7 @@ import {useContext} from "react"
 function CampaignCard({campaign}){
     const {description, image, name, status} = campaign
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
+    const {setSelectedCampaign} = useContext(SelectedCampaignContext)
     const {setEditCampaign} = useContext(EditCampaignContext)
 
 
