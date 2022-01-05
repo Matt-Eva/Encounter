@@ -3,8 +3,7 @@ import {Link} from "react-router-dom"
 
 
 
-function EncounterCard({id, name, description, notes, status, image}){
-
+function EncounterCard({id, name, handleDelete, status, image}){
     
     return(
         <Card style={{"height": "auto", "width": 300}}>
@@ -19,6 +18,7 @@ function EncounterCard({id, name, description, notes, status, image}){
                 <Col>
                     <Link to={`/encounters/${id}`}><Button>View</Button></Link>
                     <Button>Edit</Button>
+                    <Button onClick={() => handleDelete(id)}>Delete</Button>
                 </Col>
             </Row>
         </Card>

@@ -17,7 +17,6 @@ function HomePage(){
         fetch("/campaigns")
         .then(r => r.json())
         .then(data =>{
-            console.log(data)
             setCampaigns(data)
         })
     }, [])
@@ -64,7 +63,6 @@ function HomePage(){
             <Row>
                 <CampaignDisplayContainer campaigns={campaigns}/>
             </Row>
-        
         </Container>
     );
 }

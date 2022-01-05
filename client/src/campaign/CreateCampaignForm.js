@@ -32,7 +32,6 @@ function CreateCampaignForm(){
          fetch("/campaigns", configObj)
          .then(r => r.json())
          .then(data =>{
-             console.log(data)
              setCampaigns([...campaigns, data])
              setForm({
                 name:"",
