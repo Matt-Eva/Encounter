@@ -1,6 +1,7 @@
 import LogoutButton from "../userAuth/LogoutButton";
 import EditCampaignForm from "./EditCampaignForm"
 import { EditCampaignContext } from "../context/editCampaignState";
+import HomePageButton from "../home/HomePageButton";
 import {useContext} from "react"
 import {Link} from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
@@ -12,7 +13,7 @@ function EditCampaignPage(){
         <Container>
             <Row>
                 <Col>
-                <button><Link to="/">HomePage</Link></button>
+                <HomePageButton/>
                 </Col>
                 <Col>
                 <h1>Edit {editCampaign.name}</h1>
