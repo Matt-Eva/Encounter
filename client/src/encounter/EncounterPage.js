@@ -11,6 +11,13 @@ function EncounterPage(){
     const [display, setDisplay] = useState("description")
     const{selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
     const encounter = useParams()
+    
+    const npcs = selectedEncounter.npcs?.map(npc => <div>
+        <h4>{npc.name}</h4>
+        <img src={npc.image} style={{"max-width" : "200px"}}/>
+        <p>{npc.description}</p>
+        </div>)
+    
 
 
     useEffect(() => {
@@ -18,6 +25,7 @@ function EncounterPage(){
         .then(r => r.json())
         .then(data => {
             setSelectedEncounter(data)
+            console.log(selectedEncounter.npcs)
         })
     }, [])
 
@@ -75,8 +83,8 @@ function EncounterPage(){
                 <Col md={6}>
                     <h2>Npcs</h2>
                     {selectedEncounter.npcs ? null : <p>Create some NPCs for your encounter and add them here!</p>}
-                    <Link to="/createencounternpc"><Button>Create a New Item!</Button></Link>
-                    {/* npc name cards when created */}
+                    <Link to="/createencounternpc"><Button>Create a New NPC!</Button></Link>
+                    {npcs}
                 </Col>
                 <Col md={6}>
                     <p>Interactive window that displays the npc card in detail</p>
@@ -86,7 +94,7 @@ function EncounterPage(){
                 <Col md={6}>
                     <h2>Monsters</h2>
                     {selectedEncounter.monsters ? null : <p>Create some monsters for your encounter and add them here!</p>}
-                    <Link to="/createencountermonster"><Button>Create a New Item!</Button></Link>
+                    <Link to="/createencountermonster"><Button>Create a New Monster!</Button></Link>
                     {/* monster cards when created */}
                 </Col>
                 <Col md={6}>
