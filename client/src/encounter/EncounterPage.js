@@ -23,19 +23,15 @@ function EncounterPage(){
         <img src={monster.image} style={{"max-width" : "200px"}}/>
         <p>{monster.description}</p>
         </div>)
-    
-
 
     useEffect(() => {
         fetch(`/encs/${encounter.id}`)
         .then(r => r.json())
         .then(data => {
             setSelectedEncounter(data)
-            console.log(selectedEncounter.npcs)
         })
     }, [])
 
-    console.log("selencName:", selectedEncounter.name)
     if(selectedEncounter.length === 0){
         return <h1>Loading...</h1>
     }
@@ -80,7 +76,7 @@ function EncounterPage(){
                 </Col>
                 <Col md={6}>
                     <h2>Inventory</h2>
-                    {selectedEncounter.items ? null : <p>Create some items for your encounter and add them here!</p>}
+                    {selectedEncounter.items.length !== 0 ? null : <p>Create some items for your encounter and add them here!</p>}
                     <Link to="/createencounteritem"><Button>Create a New Item!</Button></Link>
                     {/* Item Cards when Created */}
                 </Col>
@@ -88,9 +84,8 @@ function EncounterPage(){
             <Row>
                 <Col md={6}>
                     <h2>Npcs</h2>
-                    {selectedEncounter.npcs ? null : <p>Create some NPCs for your encounter and add them here!</p>}
+                    {selectedEncounter.npcs.length !== 0 ? npcs : <p>Create some NPCs for your encounter and add them here!</p>}
                     <Link to="/createencounternpc"><Button>Create a New NPC!</Button></Link>
-                    {npcs}
                 </Col>
                 <Col md={6}>
                     <p>Interactive window that displays the npc card in detail</p>
@@ -99,9 +94,8 @@ function EncounterPage(){
             <Row>
                 <Col md={6}>
                     <h2>Monsters</h2>
-                    {selectedEncounter.monsters ? null : <p>Create some monsters for your encounter and add them here!</p>}
+                    {selectedEncounter.monsters.length !== 0 ? monsters : <p>Create some monsters for your encounter and add them here!</p>}
                     <Link to="/createencountermonster"><Button>Create a New Monster!</Button></Link>
-                    {monsters}
                 </Col>
                 <Col md={6}>
                     <p>Interactive window that displays the monster card in detail</p>
