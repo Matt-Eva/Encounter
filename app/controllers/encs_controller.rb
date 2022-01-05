@@ -15,6 +15,12 @@ class EncsController < ApplicationController
         render json: encounter, status: :created
     end
 
+    def update
+        encounter = Enc.find(params[:id])
+        encounter.update(encounter_params)
+        render json: encounter, status: :accepted
+    end
+
     def destroy
         encounter = Enc.find(params[:id])
         encounter.destroy

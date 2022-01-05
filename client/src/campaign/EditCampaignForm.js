@@ -8,7 +8,7 @@ function EditCampaignForm({campaign}){
         name: campaign.name,
         description: campaign.description,
         image: campaign.image,
-        status: "active"
+        status: campaign.status
     })
 
     function handleChange(e){
