@@ -25,6 +25,14 @@ function HomePage(){
         setEditCampaign(null)
     }
 
+    if (user.id === 0){
+        return(
+          <h1>
+            Loading...
+          </h1>
+        )
+      }
+
     return(
         <Container>
             <Row>

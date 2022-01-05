@@ -4,6 +4,7 @@ import Login from "./userAuth/Login";
 import Signup from "./userAuth/Signup";
 import CampaignPage from './campaign/CampaignPage';
 import CreateCampaignPage from './campaign/CreateCampaignPage';
+import EncounterPage from "./encounter/EncounterPage"
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/userState"
 import {Route, Routes, useNavigate} from "react-router-dom"
@@ -20,6 +21,7 @@ function App() {
       if (response.ok){
         response.json().then((user) => {
           setUser(user)
+          navigate("/home")
         })
       } else{
         navigate("/login")
@@ -30,13 +32,14 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/createencounter" element={<CreateEncounterPage/>}/>
-        <Route path="/campaigns/:id" element={<CampaignPage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/campaign/:id" element={<CampaignPage/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
         <Route path="/editcampaign" element={<EditCampaignPage/>}/>
-        <Route exact path="/" element={<HomePage/>}/>
+        <Route path="encounter/:id" element={<EncounterPage/>}/>
+        <Route path="/createencounter" element={<CreateEncounterPage/>}/>
+        <Route path="/home" element={<HomePage/>}/>
       </Routes>
     </div>
   );

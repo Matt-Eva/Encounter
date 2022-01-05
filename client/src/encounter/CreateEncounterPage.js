@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import LogoutButton from "../userAuth/LogoutButton";
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
+import { useNavigate } from "react-router-dom"
 
 
 function CreateEncounterPage(){
@@ -19,6 +20,7 @@ function CreateEncounterPage(){
         notes: "",
         status: ""
     }) 
+    const navigate = useNavigate()
 
     function handleChange(e){
         setNewEncounter({
@@ -58,6 +60,7 @@ function CreateEncounterPage(){
                 notes: "",
                 status: ""
             })
+            navigate(`/campaign/${selectedCampaign.id}`)
         })
     }
 
