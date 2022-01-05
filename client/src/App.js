@@ -33,7 +33,7 @@ function App() {
     {/* {user.id === 0 ? <h1>Loading...</h1> : null} */}
       <Routes>
         <Route path="/createencounter" element={<CreateEncounterPage/>}/>
-        <Route path="/campaigns/:id" element={<CampaignPage/>}/>
+        <Route path="/campaign/:id" element={<CampaignPage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>

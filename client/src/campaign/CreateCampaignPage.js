@@ -8,7 +8,7 @@ function CreateCampaignPage(){
         <Container>
             <Row>
                 <Col>
-                <button><Link to="/">HomePage</Link></button>
+                <button><Link to="/home">HomePage</Link></button>
                 </Col>
                 <Col>
                 <h1>Create A New Campaign</h1>
