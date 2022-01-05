@@ -11,7 +11,7 @@ import CreateEncounterPage from './encounter/CreateEncounterPage';
 import EditCampaignPage from './campaign/EditCampaignPage';
 
 function App() {
-  const {setUser} = useContext(UserContext)
+  const {user, setUser} = useContext(UserContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function App() {
       if (response.ok){
         response.json().then((user) => {
           setUser(user)
+          navigate("/home")
         })
       } else{
         navigate("/login")
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div>
+    {/* {user.id === 0 ? <h1>Loading...</h1> : null} */}
       <Routes>
         <Route path="/createencounter" element={<CreateEncounterPage/>}/>
         <Route path="/campaigns/:id" element={<CampaignPage/>}/>
@@ -36,7 +38,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
         <Route path="/editcampaign" element={<EditCampaignPage/>}/>
-        <Route exact path="/" element={<HomePage/>}/>
+        <Route path="/home" element={<HomePage/>}/>
       </Routes>
     </div>
   );
