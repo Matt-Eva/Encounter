@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  post '/newencitem', to: 'items#newencitem'
   post '/newencnpc', to: 'npcs#newencnpc'
   post '/newencmonster', to: 'monsters#newencmonster'
 end

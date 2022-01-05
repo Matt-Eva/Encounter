@@ -24,6 +24,12 @@ function EncounterPage(){
         <p>{monster.description}</p>
         </div>)
 
+    const items = selectedEncounter.items?.map(item => <div>
+        <h4>{item.name}</h4>
+        <img src={item.image} style={{"max-width" : "200px"}}/>
+        <p>{item.description}</p>
+        </div>)
+
     useEffect(() => {
         fetch(`/encs/${encounter.id}`)
         .then(r => r.json())
@@ -76,7 +82,7 @@ function EncounterPage(){
                 </Col>
                 <Col md={6}>
                     <h2>Inventory</h2>
-                    {selectedEncounter.items.length !== 0 ? null : <p>Create some items for your encounter and add them here!</p>}
+                    {selectedEncounter.items.length !== 0 ? items : <p>Create some items for your encounter and add them here!</p>}
                     <Link to="/createencounteritem"><Button>Create a New Item!</Button></Link>
                     {/* Item Cards when Created */}
                 </Col>
