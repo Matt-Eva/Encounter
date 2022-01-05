@@ -1,12 +1,13 @@
 import {Button, Card, Row, Col, Container} from "react-bootstrap";
 import LogoutButton from "../userAuth/LogoutButton";
-import {useContext, useEffect} from "react"
+import {useContext, useEffect, useState} from "react"
 import {useParams} from "react-router-dom"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import HomePageButton from "../home/HomePageButton";
 
 
 function EncounterPage(){
+    const [display, setDisplay] = useState("description")
     const{selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
     const encounter = useParams()
 
@@ -40,9 +41,21 @@ function EncounterPage(){
             </Row>
             <Row>
                 <Col>
+                    <span>Description | </span>
+                    <span>NPCs | </span>
+                    <span>Monsters | </span>
+                    <span>Items | </span>
+                    <span>Location</span>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <h2>{selectedEncounter.name}</h2>
                     <p>Location: {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> : null}</p>
                     <p>{selectedEncounter.description}</p>
+                </Col>
+                <Col>
+                    <img src={selectedEncounter.image}/>
                 </Col>
             </Row>
             <Row>
