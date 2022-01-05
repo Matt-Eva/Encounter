@@ -21,7 +21,7 @@ function App() {
       if (response.ok){
         response.json().then((user) => {
           setUser(user)
-          navigate("/home")
+          // navigate("/home")
         })
       } else{
         navigate("/login")
