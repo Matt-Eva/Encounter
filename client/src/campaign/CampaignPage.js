@@ -1,19 +1,29 @@
 import LogoutButton from "../userAuth/LogoutButton";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import {Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EncounterCard from "../encounter/EncounterCard"
+import HomePageButton from "../home/HomePageButton";
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
+import {useParams} from "react-router-dom"
+
 
 
 
 function CampaignPage(){
     const {user} = useContext(UserContext)
-    const {selectedCampaign} = useContext(SelectedCampaignContext)
+    const {selectedCampaign, setSelectedCampaign} = useContext(SelectedCampaignContext)
     const {encounters, setEncounters} = useContext(EncountersContext)
+    const campaign = useParams()
+
+    useEffect(() => {
+        fetch(`/campaigns/${campaign.id}`)
+        .then(r => r.json())
+        .then(data => setSelectedCampaign(data))
+    }, [])
 
     useEffect(() => {
         fetch(`/campaignencs/${selectedCampaign.id}`)
@@ -21,7 +31,7 @@ function CampaignPage(){
         .then(data => {
             setEncounters(data)
         })
-    },[])
+    },[selectedCampaign])
 
     function handleDelete(id){
         fetch(`/encs/${id}`, {method: "DELETE"})
@@ -33,15 +43,14 @@ function CampaignPage(){
 
     //Encounter card mapping
 
-    const encounterCards = encounters?.map(enc => <EncounterCard key={enc.id} id={enc.id} handleDelete={handleDelete} name={enc.name} image={enc.image} status={enc.status}/>)
+    const encounterCards = encounters?.map(enc => <EncounterCard key={enc.id} id={enc.id} handleDelete={handleDelete} encounter={enc} name={enc.name} image={enc.image} status={enc.status}/>)
 
 
     return(
         <Container className="mw-100">
             <Row>
                 <Col>
-                    Icon
-                    Menu
+                    <HomePageButton/>
                 </Col>
                 <Col>
                    Encounter<br/>
