@@ -23,10 +23,6 @@ function CampaignPage(){
         })
     },[])
 
-    useEffect(() => {
-
-    }, [])
-
     function handleDelete(id){
         fetch(`/encs/${id}`, {method: "DELETE"})
         .then(() => {

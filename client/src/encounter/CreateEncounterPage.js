@@ -1,4 +1,4 @@
-import {Form, Button, Container, Row, Col} from "react-bootstrap"
+import {Form, Container, Row, Col} from "react-bootstrap"
 import {UserContext} from "../context/userState";
 import { useContext, useState } from "react";
 import LogoutButton from "../userAuth/LogoutButton";
@@ -19,8 +19,6 @@ function CreateEncounterPage(){
         notes: "",
         status: ""
     }) 
-    console.log("selectedCampaign:", selectedCampaign)
-    console.log("newEncounter:", newEncounter)
 
     function handleChange(e){
         setNewEncounter({
@@ -31,7 +29,6 @@ function CreateEncounterPage(){
 
     function handleSubmit(e, obj) {
         e.preventDefault()
-        console.log("image:", obj.image)
         const configObj = {
             method: "POST",
             headers: {
