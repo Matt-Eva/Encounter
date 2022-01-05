@@ -17,6 +17,12 @@ function EncounterPage(){
         <img src={npc.image} style={{"max-width" : "200px"}}/>
         <p>{npc.description}</p>
         </div>)
+
+    const monsters = selectedEncounter.monsters?.map(monster => <div>
+        <h4>{monster.name}</h4>
+        <img src={monster.image} style={{"max-width" : "200px"}}/>
+        <p>{monster.description}</p>
+        </div>)
     
 
 
@@ -95,7 +101,7 @@ function EncounterPage(){
                     <h2>Monsters</h2>
                     {selectedEncounter.monsters ? null : <p>Create some monsters for your encounter and add them here!</p>}
                     <Link to="/createencountermonster"><Button>Create a New Monster!</Button></Link>
-                    {/* monster cards when created */}
+                    {monsters}
                 </Col>
                 <Col md={6}>
                     <p>Interactive window that displays the monster card in detail</p>
