@@ -4,12 +4,14 @@ import {Link} from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import {CampaignsContext} from "../context/campaignsState"
+import {EditCampaignContext} from "../context/editCampaignState"
 import { useContext, useEffect } from "react";
 
 
 function HomePage(){
     const {user} = useContext(UserContext)
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
+    const {setEditCampaign} = useContext(EditCampaignContext)
 
     useEffect(() =>{
         fetch("/campaigns")
@@ -19,6 +21,10 @@ function HomePage(){
             setCampaigns(data)
         })
     }, [])
+
+    function create(){
+        setEditCampaign(null)
+    }
 
     return(
         <Container>
@@ -49,7 +55,7 @@ function HomePage(){
                     </form>
                 </Col>
                 <Col>
-                    <button><Link to="/createcampaign">Create New Campaign</Link></button>
+                    <button onClick={create}><Link to="/createcampaign">Create New Campaign</Link></button>
                 </Col>
             </Row>
             <Row>

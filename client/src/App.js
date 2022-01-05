@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/userState"
 import {Route, Routes, useNavigate} from "react-router-dom"
 import CreateEncounterPage from './encounter/CreateEncounterPage';
+import EditCampaignPage from './campaign/EditCampaignPage';
 
 function App() {
   const {setUser} = useContext(UserContext)
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
+        <Route path="/editcampaign" element={<EditCampaignPage/>}/>
         <Route exact path="/" element={<HomePage/>}/>
       </Routes>
     </div>

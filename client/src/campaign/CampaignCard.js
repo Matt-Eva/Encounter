@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import {CampaignsContext} from "../context/campaignsState";
+import {EditCampaignContext} from "../context/editCampaignState"
 import {useContext} from "react"
 
 function CampaignCard({campaign}){
     const {description, image, name, status} = campaign
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
+    const {setEditCampaign} = useContext(EditCampaignContext)
 
 
     function deleteCampaign(id){
@@ -15,6 +17,11 @@ function CampaignCard({campaign}){
             setCampaigns([...oneLess])
         })
     }
+
+    function edit(){
+        setEditCampaign(campaign)
+    }
+
     return(
         <div>
             <h3>{name}</h3>
@@ -22,7 +29,7 @@ function CampaignCard({campaign}){
             <p style={{"maxWidth": "300px"}}>{description}</p>
             <p>Status: {status}</p>
             <button><Link to={`campaigns/${campaign.id}`}>View</Link></button>
-            <button>Edit</button>
+            <button onClick={edit}><Link to="/editcampaign">Edit</Link></button>
             <button onClick={() =>deleteCampaign(campaign.id)}>Delete</button>
         </div>
     );
