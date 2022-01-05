@@ -2,11 +2,9 @@ import LogoutButton from "../userAuth/LogoutButton";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import { useContext, useEffect, useState } from "react";
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import EncounterCard from "../encounter/EncounterCard"
-import CreateEncounterPage from "../encounter/CreateEncounterPage";
-import { SelectedCampaignContext } from "../context/selectedCampaignState";
 
 
 
@@ -14,7 +12,7 @@ function CampaignPage(){
     const {user} = useContext(UserContext)
     const [campaign, setCampaign] = useState({})
     const [encounters, setEncounters] = useState([])
-    const {selectedCampaign, setSelectedCampaign} = useContext(SelectedCampaignContext)
+    const [encsToDisplay, setEncsToDisplay] = useState([])
     const campaignId = useParams().id
 
     useEffect(() => {
@@ -25,12 +23,22 @@ function CampaignPage(){
             let encs = campaignData.encs
             let newEncsData = encs.map(enc => enc)
             setEncounters(newEncsData)
+            setEncsToDisplay(newEncsData)
         })
     },[campaignId])
 
+    function handleDelete(id){
+        fetch(`/encs/${id}`, {method: "DELETE"})
+        .then(r => r.json())
+        .then(deletedObj => {
+            const newEncs = encounters.filter(enc => enc.id !== deletedObj.id)
+            setEncounters(newEncs)
+        })
+    }
+
     //Encounter card mapping
 
-    const encounterCards = encounters?.map(enc => <EncounterCard key={enc.id} id={enc.id} name={enc.name} description={enc.description} image={enc.image} notes={enc.notes} status={enc.status}/>)
+    const encounterCards = encsToDisplay?.map(enc => <EncounterCard key={enc.id} id={enc.id} handleDelete={handleDelete} name={enc.name} image={enc.image} status={enc.status}/>)
 
 
     return(
@@ -61,7 +69,7 @@ function CampaignPage(){
                 </Col>
             </Row>
             <Row>
-                <Link to="/reateencounter"><Button>Create a New Encounter</Button></Link>
+                <Link to="/createencounter"><Button>Create a New Encounter</Button></Link>
                 {encounterCards}
             </Row>
         </Container>
