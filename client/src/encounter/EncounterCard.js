@@ -20,7 +20,7 @@ function EncounterCard({id, name, handleDelete, status, image, encounter}){
             <Row>
                 <Col>
                     <Link to={`/encounter/${id}`}><Button onClick={() => setSelectedEncounter(encounter)}>View</Button></Link>
-                    <Button>Edit</Button>
+                    <Link to="/editencounter"><Button>Edit</Button></Link>
                     <Button onClick={() => handleDelete(id)}>Delete</Button>
                 </Col>
             </Row>

@@ -10,6 +10,7 @@ import { UserContext } from "./context/userState"
 import {Route, Routes, useNavigate} from "react-router-dom"
 import CreateEncounterPage from './encounter/CreateEncounterPage';
 import EditCampaignPage from './campaign/EditCampaignPage';
+import EditEncounterPage from './encounter/EditEncounterPage';
 
 function App() {
   const {setUser} = useContext(UserContext)
@@ -39,6 +40,7 @@ function App() {
         <Route path="/editcampaign" element={<EditCampaignPage/>}/>
         <Route path="encounter/:id" element={<EncounterPage/>}/>
         <Route path="/createencounter" element={<CreateEncounterPage/>}/>
+        <Route path="/editencounter" element={<EditEncounterPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
       </Routes>
     </div>
