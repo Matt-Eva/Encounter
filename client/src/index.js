@@ -8,9 +8,11 @@ import { UserProvider } from './context/userState'
 import { CampaignsProvider } from './context/campaignsState'
 import { SelectedCampaignProvider } from './context/selectedCampaignState'
 import { EditCampaignProvider } from './context/editCampaignState';
+import { EncountersProvider } from './context/encountersState'
 
 ReactDOM.render(
   <BrowserRouter>
+    <EncountersProvider>
     <SelectedCampaignProvider>
     <CampaignsProvider>
     <UserProvider>
@@ -20,6 +22,7 @@ ReactDOM.render(
     </UserProvider>
     </CampaignsProvider>
     </SelectedCampaignProvider>
+    </EncountersProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
