@@ -1,6 +1,11 @@
+import CreateEncounterNpcForm from "./CreateEncounterNpcForm";
+
 function EncounterNpcPage(){
     return(
-        <div>Npc Page</div>
+        <div>
+            <h1>Create a New NPC!</h1>
+            <CreateEncounterNpcForm/>
+        </div>
     );
 }
 
