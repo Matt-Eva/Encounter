@@ -11,6 +11,7 @@ import {Route, Routes, useNavigate} from "react-router-dom"
 import CreateEncounterPage from './encounter/CreateEncounterPage';
 import EditCampaignPage from './campaign/EditCampaignPage';
 import EditEncounterPage from './encounter/EditEncounterPage';
+import EncounterNpcPage from "./npc/EncounterNpcPage";
 
 function App() {
   const {setUser} = useContext(UserContext)
@@ -39,8 +40,9 @@ function App() {
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
         <Route path="/editcampaign" element={<EditCampaignPage/>}/>
         <Route path="encounter/:id" element={<EncounterPage/>}/>
-        <Route path="/createencounter" element={<CreateEncounterPage/>}/>
+        <Route exact path="/createencounter" element={<CreateEncounterPage/>}/>
         <Route path="/editencounter" element={<EditEncounterPage/>}/>
+        <Route path="/createencounternpc" element={<EncounterNpcPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
       </Routes>
     </div>
