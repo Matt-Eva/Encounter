@@ -24,8 +24,6 @@ function CampaignCard({campaign}){
         setEditCampaign(campaign)
     }
 
-
-  
    function handleViewCampaignOnClick(){
         setSelectedCampaign(campaign)
     }
@@ -37,12 +35,8 @@ function CampaignCard({campaign}){
             <img src={image} style={{"maxWidth": "200px"}}/>
             <p style={{"maxWidth": "300px"}}>{description}</p>
             <p>Status: {status}</p>
-
             <button onClick={edit}><Link to="/editcampaign">Edit</Link></button>
-
             <button onClick={handleViewCampaignOnClick}><Link to={`campaigns/${campaign.id}`}>View</Link></button>
-
-
             <button onClick={() =>deleteCampaign(campaign.id)}>Delete</button>
         </div>
     );
