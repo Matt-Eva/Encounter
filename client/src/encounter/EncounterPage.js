@@ -6,7 +6,6 @@ import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import Icon from "../home/Icon";
 import paperBackground from '../assets/paperBackground.jpg'
 
-
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
     backgroundRepeat: 'no-repeat',
