@@ -1,5 +1,6 @@
 import LogoutButton from "../userAuth/LogoutButton";
 import CampaignDisplayContainer from "../campaign/CampaignDisplayContainer";
+import Icon from "./Icon"
 import {Link} from "react-router-dom";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
@@ -8,6 +9,7 @@ import {EditCampaignContext} from "../context/editCampaignState"
 import { useContext, useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import paperBackground from '../assets/paperBackground.jpg'
+
 
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
@@ -47,8 +49,7 @@ function HomePage(){
         <Container style={backgroundImageStyle} className="mw-100 vh-100">
             <Row className="justify-content-center">
                 <Col className="text-center">
-                    Icon
-                    Menu
+                    <Icon/>
                 </Col>
                 <Col className="text-center">
                    Encounter<br/>
