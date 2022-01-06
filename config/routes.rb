@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   post '/newencitem', to: 'items#newencitem'
   post '/newencnpc', to: 'npcs#newencnpc'
   post '/newencmonster', to: 'monsters#newencmonster'
+  post '/newenclocation', to: 'locations#newenclocation'
 end
