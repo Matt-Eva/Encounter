@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-bootstrap-icons": "^1.7.2",
     "react-redux": "^7.2.6",
     "styled-components": "^5.3.3"
   }

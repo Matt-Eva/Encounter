@@ -4,12 +4,24 @@ import {CampaignsContext} from "../context/campaignsState";
 import {EditCampaignContext} from "../context/editCampaignState"
 import {useContext} from "react"
 import {Button, Card, Row, Col, Container} from "react-bootstrap";
+import paperBackground from '../assets/paperBackground.jpg'
+
+
+const cardStyle = {
+    backgroundImage: `url(${paperBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: "300px",
+    height: "500px", 
+    padding: "10px"
+}
 
 function CampaignCard({campaign}){
     const {description, image, name, status} = campaign
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
     const {setSelectedCampaign} = useContext(SelectedCampaignContext)
     const {setEditCampaign} = useContext(EditCampaignContext)
+
 
 
     function deleteCampaign(id){
@@ -22,8 +34,8 @@ function CampaignCard({campaign}){
     }
 
     return(
-        <Card style={{"height": 500, width: '18rem'}} className="bg-tan">
-            <Card.Img src={image} alt="Image of the encounter" className="card-img-top img-fluid overflow-hidden"/>
+        <Card style={cardStyle}>
+            <Card.Img src={image} alt="Image of the encounter" className="card-img-top img-fluid overflow-hidden border border-dark"/>
         <Card.Body>
         <Card.Title>
             {name}
@@ -44,3 +56,4 @@ function CampaignCard({campaign}){
 }
 
 export default CampaignCard;
+
