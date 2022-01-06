@@ -5,9 +5,6 @@ import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import {EditEncounterContext} from "../context/editEncounterState";
 import { EncountersContext } from "../context/encountersState";
 
-
-
-
 function EncounterCard({id, name, handleDelete, status, image, encounter}){
     const {encounters, setEncounters} = useContext(EncountersContext)
     const {setSelectedEncounter} = useContext(SelectedEncounterContext)
