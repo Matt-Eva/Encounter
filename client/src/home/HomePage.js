@@ -5,9 +5,9 @@ import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import {CampaignsContext} from "../context/campaignsState"
 import {EditCampaignContext} from "../context/editCampaignState"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 import paperBackground from '../assets/paperBackground.jpg'
-
 
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
@@ -19,6 +19,7 @@ function HomePage(){
     const {user} = useContext(UserContext)
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
     const {setEditCampaign} = useContext(EditCampaignContext)
+    const [search, setSearch] = useState("")
 
     useEffect(() =>{
         fetch("/campaigns")
@@ -31,6 +32,8 @@ function HomePage(){
     function create(){
         setEditCampaign(null)
     }
+
+    const campaignsToDisplay = campaigns.filter(campaign => campaign.name.toLowerCase().includes(search.toLowerCase()))
 
     if (user.id === 0){
         return(
@@ -63,10 +66,7 @@ function HomePage(){
             <Row className="justify-content-center">
                 <Col className="text-center">
                 {/* This is just a placeholder - we'll eventually use our Searchbar component */}
-                    <form>
-                        <input type="text" placeholder="Search campaigns by title..."/>
-                        <button type="submit">Search</button>
-                    </form>
+                    <SearchBar search={search} setSearch={setSearch}/>
                 </Col>
                 <Col className="text-center">
                 <Link to="/createcampaign"><Button variant="danger" className="text-dark" onClick={create}>Create New Campaign</Button></Link>
@@ -76,7 +76,7 @@ function HomePage(){
                 Filter
             </Row>
             <Row className="justify-content-center">
-                <CampaignDisplayContainer campaigns={campaigns}/>
+                <CampaignDisplayContainer search={search} campaigns={campaignsToDisplay}/>
             </Row>
         </Container>
     );

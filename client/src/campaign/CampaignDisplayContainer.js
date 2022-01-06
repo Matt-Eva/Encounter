@@ -1,7 +1,7 @@
 import CampaignCard from "./CampaignCard"
 import { Container, Row, Stack } from "react-bootstrap"
 
-function CampaignDisplayContainer({campaigns}){
+function CampaignDisplayContainer({campaigns, search}){
     const campaignList = campaigns.map(campaign => <CampaignCard key={campaign.id} campaign={campaign}/>)
     return(
         <Container>
