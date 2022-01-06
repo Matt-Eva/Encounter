@@ -9,7 +9,8 @@ import paperBackground from '../assets/paperBackground.jpg'
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    minHeight: "100vh"
 }
 
 

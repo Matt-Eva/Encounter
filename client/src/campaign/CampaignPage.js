@@ -16,7 +16,8 @@ import Filter from "../home/Filter";
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    minHeight: "100vh"
 }
 
 function CampaignPage(){
@@ -65,8 +66,7 @@ function CampaignPage(){
                     <Icon/>
                 </Col>
                 <Col>
-                   Encounter<br/>
-                   Welcome {user.dm_name}
+                <h1>Campaign</h1>
                 </Col>
                 <Col>
                     <LogoutButton/>
