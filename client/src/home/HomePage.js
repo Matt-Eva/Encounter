@@ -60,8 +60,8 @@ function HomePage(){
                     <Icon/>
                 </Col>
                 <Col className="text-center">
-                   Encounter<br/>
-                   Welcome {user.dm_name}
+                   <h1>Encounter</h1>
+                   <h3>Welcome {user.dm_name}</h3>
                 </Col>
                 <Col className="text-center">
                     <LogoutButton/>
