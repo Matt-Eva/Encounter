@@ -2,7 +2,7 @@ import LogoutButton from "../userAuth/LogoutButton";
 import CampaignDisplayContainer from "../campaign/CampaignDisplayContainer";
 import Icon from "./Icon"
 import {Link} from "react-router-dom";
-import {Row, Container, Col, Button} from "react-bootstrap";
+import {Row, Container, Col, Button, ButtonGroup, ButtonToolbar} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import {CampaignsContext} from "../context/campaignsState"
 import {EditCampaignContext} from "../context/editCampaignState"
@@ -22,6 +22,7 @@ function HomePage(){
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
     const {setEditCampaign} = useContext(EditCampaignContext)
     const [search, setSearch] = useState("")
+    const [selected, setSelected] = useState("all")
 
     useEffect(() =>{
         fetch("/campaigns")
@@ -35,7 +36,13 @@ function HomePage(){
         setEditCampaign(null)
     }
 
-    const campaignsToDisplay = campaigns.filter(campaign => campaign.name.toLowerCase().includes(search.toLowerCase()))
+    const campaignsToDisplay = campaigns.filter(campaign => campaign.name.toLowerCase().includes(search.toLowerCase())).filter((campaign) => {
+        if(selected === "all"){
+            return true
+        } else {
+            return selected === campaign.status
+        }
+    })
 
     if (user.id === 0){
         return(
@@ -66,7 +73,6 @@ function HomePage(){
             </Row>
             <Row className="justify-content-center">
                 <Col className="text-center">
-                {/* This is just a placeholder - we'll eventually use our Searchbar component */}
                     <SearchBar search={search} setSearch={setSearch}/>
                 </Col>
                 <Col className="text-center">
@@ -74,7 +80,16 @@ function HomePage(){
                 </Col>
             </Row>
             <Row className="justify-content-center">
-                Filter
+                <Col>
+                <form onChange={(e) => setSelected(e.target.value)}>
+                    <input type="radio" id="all" value="all" checked={selected === "all" ? true : false}/>
+                    <label for="all" style={{"padding": "2px", "marginRight": "2px"}}>All</label>
+                    <input type="radio" id="active" value="active" checked={selected === "active" ? true : false}/>
+                    <label for="active" style={{"padding": "2px", "marginRight": "2px"}}>Active</label>
+                    <input type="radio" id="archived" value="archived" checked={selected === "archived" ? true : false}/>
+                    <label for="archived" style={{"padding": "2px", "marginRight": "2px"}}>Archived</label>
+                </form>
+                </Col>
             </Row>
             <Row className="justify-content-center">
                 <CampaignDisplayContainer search={search} campaigns={campaignsToDisplay}/>
