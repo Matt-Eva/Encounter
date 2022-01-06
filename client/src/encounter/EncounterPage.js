@@ -3,7 +3,7 @@ import LogoutButton from "../userAuth/LogoutButton";
 import {useContext, useEffect, useState} from "react"
 import {useParams, Link} from "react-router-dom"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
-import HomePageButton from "../home/HomePageButton";
+import Icon from "../home/Icon";
 import EncounterNpcPage from "../npc/EncounterNpcPage";
 
 
@@ -47,10 +47,10 @@ function EncounterPage(){
         <Container>
             <Row>
                 <Col>
-                    <HomePageButton />
+                    <Icon/>
                 </Col>
                 <Col>
-                    <h1>{selectedEncounter.campaign.name}</h1>
+                    <Link to={`/campaign/${selectedEncounter.campaign.id}`} style={{"color": "black", "text-decoration": "none"}}><h1>{selectedEncounter.campaign.name}</h1></Link>
                     {/* {campaign ? <h1>{campaign}</h1> : null} */}
                 </Col>
                 <Col>

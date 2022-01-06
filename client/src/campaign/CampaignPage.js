@@ -1,11 +1,11 @@
 import LogoutButton from "../userAuth/LogoutButton";
+import EncounterCard from "../encounter/EncounterCard"
+import Icon from "../home/Icon";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
 import { useContext, useEffect } from "react";
 import {Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import EncounterCard from "../encounter/EncounterCard"
-import HomePageButton from "../home/HomePageButton";
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import {useParams} from "react-router-dom"
@@ -50,7 +50,7 @@ function CampaignPage(){
         <Container className="mw-100">
             <Row>
                 <Col>
-                    <HomePageButton/>
+                    <Icon/>
                 </Col>
                 <Col>
                    Encounter<br/>
