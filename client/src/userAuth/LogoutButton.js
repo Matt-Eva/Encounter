@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import Button from "react-bootstrap/Button"
 
 function LogoutButton(){
     const navigate = useNavigate()
@@ -7,7 +8,7 @@ function LogoutButton(){
         .then(()=> navigate('/login'))
     }
     return(
-        <button onClick={logout}>Logout</button>
+        <Button variant="light" onClick={logout}>Logout</Button>
     );
 }
 

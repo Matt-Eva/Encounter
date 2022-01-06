@@ -5,6 +5,10 @@ import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import {EditEncounterContext} from "../context/editEncounterState";
 import { EncountersContext } from "../context/encountersState";
 
+const buttonStyle = { 
+    margin: "5px"
+}
+
 function EncounterCard({id, name, handleDelete, status, image, encounter}){
     const {encounters, setEncounters} = useContext(EncountersContext)
     const {setSelectedEncounter} = useContext(SelectedEncounterContext)
@@ -57,10 +61,10 @@ function EncounterCard({id, name, handleDelete, status, image, encounter}){
             </Card.Text>
             <Row>
                 <Col>
-                    <Link to={`/encounter/${id}`}><Button onClick={() => setSelectedEncounter(encounter)}>View</Button></Link>
-                    <Link to="/editencounter"><Button onClick={() => setEditEncounter(encounter)}>Edit</Button></Link>
-                    {status === "active"? <Button onClick={toggleStatus}>Archive</Button> : <Button onClick={toggleStatus}>Reactivate</Button>}
-                    <Button onClick={() => handleDelete(id)}>Delete</Button>
+                    <Link to={`/encounter/${id}`}><Button style={buttonStyle} variant="danger" onClick={() => setSelectedEncounter(encounter)}>View</Button></Link>
+                    <Link to="/editencounter"><Button style={buttonStyle} variant="danger" onClick={() => setEditEncounter(encounter)}>Edit</Button></Link>
+                    {status === "active"? <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Archive</Button> : <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Reactivate</Button>}
+                    <Button style={buttonStyle} variant="danger" onClick={() => handleDelete(id)}>Delete</Button>
                 </Col>
             </Row>
         </Card>

@@ -16,6 +16,10 @@ const cardStyle = {
     padding: "10px"
 }
 
+const buttonStyle = { 
+    margin: "5px"
+}
+
 function CampaignCard({campaign}){
     const {image, name, status} = campaign
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
@@ -78,10 +82,10 @@ function CampaignCard({campaign}){
         </Card.Text>
         <Row>
             <Col>
-                <Link to={`/campaign/${campaign.id}`}><Button onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
-                <Link to="/editcampaign"><Button onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
-                {status === "active"? <Button onClick={toggleStatus}>Archive</Button> : <Button onClick={toggleStatus}>Reactivate</Button>}
-                <Button onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
+                <Link to={`/campaign/${campaign.id}`}><Button style={buttonStyle} variant="danger" onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
+                <Link to="/editcampaign"><Button style={buttonStyle} variant="danger" onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
+                {status === "active"? <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Archive</Button> : <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Reactivate</Button>}
+                <Button style={buttonStyle} variant="danger" onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
             </Col>
         </Row>
         </Card.Body>
