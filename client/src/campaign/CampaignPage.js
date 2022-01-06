@@ -73,16 +73,6 @@ function CampaignPage(){
                 </Col> 
             </Row>
             <Row>
-                <Col>
-                    <SearchBar search={search} setSearch={setSearch}/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Filter selected={selected} setSelected={setSelected}/>
-                </Col>
-            </Row>
-            <Row>
                 <Col sm={4}>
                     <h2>{selectedCampaign.name}</h2>
                     <h5>{selectedCampaign.description}</h5>
@@ -95,7 +85,17 @@ function CampaignPage(){
                 </Col>
             </Row>
             <Row>
-                <Link to="/createencounter"><Button>Create a New Encounter</Button></Link>
+                <Col>
+                    <SearchBar search={search} setSearch={setSearch}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Filter selected={selected} setSelected={setSelected}/>
+                </Col>
+            </Row>
+            <Row>
+                <Link to="/createencounter"><Button variant="danger">Create a New Encounter</Button></Link>
                 <EncounterDisplayContainer handleDelete={handleDelete} encounters={encountersToDisplay}/>
             </Row>
         </Container>
