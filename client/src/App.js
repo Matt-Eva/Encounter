@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css"
 import HomePage from "./home/HomePage";
 import Login from "./userAuth/Login";
 import Signup from "./userAuth/Signup";

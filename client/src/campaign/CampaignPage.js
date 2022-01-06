@@ -9,6 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import {useParams} from "react-router-dom"
+import paperBackground from '../assets/paperBackground.jpg'
+
+
+const backgroundImageStyle = {
+    backgroundImage: `url(${paperBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+}
 
 
 
@@ -47,7 +55,7 @@ function CampaignPage(){
 
 
     return(
-        <Container className="mw-100">
+        <Container className="mw-100" style={backgroundImageStyle}>
             <Row>
                 <Col>
                     <Icon/>

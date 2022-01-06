@@ -4,7 +4,14 @@ import {useContext, useEffect, useState} from "react"
 import {useParams, Link} from "react-router-dom"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import Icon from "../home/Icon";
-import EncounterNpcPage from "../npc/EncounterNpcPage";
+import paperBackground from '../assets/paperBackground.jpg'
+
+
+const backgroundImageStyle = {
+    backgroundImage: `url(${paperBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+}
 
 
 function EncounterPage(){
@@ -44,7 +51,7 @@ function EncounterPage(){
     }
 
     return(
-        <Container>
+        <Container className="mw-100" style={backgroundImageStyle}>
             <Row>
                 <Col>
                     <Icon/>
