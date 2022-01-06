@@ -6,6 +6,7 @@ import {EditEncounterContext} from "../context/editEncounterState";
 
 
 
+
 function EncounterCard({id, name, handleDelete, status, image, encounter}){
     const {setSelectedEncounter} = useContext(SelectedEncounterContext)
     const {setEditEncounter} = useContext(EditEncounterContext)
