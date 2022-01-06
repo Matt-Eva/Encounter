@@ -20,11 +20,11 @@ function EncounterPage(){
     const encounter = useParams()
 
     const npcs = selectedEncounter.npcs?.map(npc =>{
-        return <li onClick={() => setSelectedNpc(npc)}>{npc.name}</li>
+        return <h2 onClick={() => setSelectedNpc(npc)}>{npc.name}</h2>
     })
 
     const monsters = selectedEncounter.monsters?.map(monster =>{
-        return <li onClick={() => setSelectedMonster(monster)}>{monster.name}</li>
+        return <h2 onClick={() => setSelectedMonster(monster)}>{monster.name}</h2>
     })
 
     let displayNpc = null;
@@ -45,18 +45,6 @@ function EncounterPage(){
             </div>
     }
     
-    // const npcs = selectedEncounter.npcs?.map(npc => <div>
-    //     <h4>{npc.name}</h4>
-    //     <img src={npc.image} style={{"maxWidth" : "200px"}}/>
-    //     <p>{npc.description}</p>
-    //     </div>)
-
-    // const monsters = selectedEncounter.monsters?.map(monster => <div>
-    //     <h4>{monster.name}</h4>
-    //     <img src={monster.image} style={{"maxWidth" : "200px"}}/>
-    //     <p>{monster.description}</p>
-    //     </div>)
-
     const items = selectedEncounter.items?.map(item => <div>
         <h4>{item.name}</h4>
         <img src={item.image} style={{"maxWidth" : "200px"}}/>
@@ -95,15 +83,6 @@ function EncounterPage(){
                     <LogoutButton />
                 </Col>
             </Row>
-            {/* <Row>
-                <Col>
-                    <span>Description | </span>
-                    <span>NPCs | </span>
-                    <span>Monsters | </span>
-                    <span>Items | </span>
-                    <span>Location</span>
-                </Col>
-            </Row> */}
             <Row>
                 <Col>
                     <h2>{selectedEncounter.name}</h2>
@@ -136,10 +115,7 @@ function EncounterPage(){
             <Row style={{"margin": "10px"}}>
                 <Col>
                     <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
-                    {selectedEncounter.npcs.length !== 0 ? null : <p>Create some NPCs for your encounter and add them here!</p>}
-                    <ul>
-                        {npcs}
-                    </ul>
+                    {selectedEncounter.npcs.length !== 0 ? <ul>{npcs}</ul> : <p>Create some NPCs for your encounter and add them here!</p>}
                     </Container>
                 </Col>
                 <Col>
@@ -150,18 +126,18 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                <h2>Monsters <Link to="/createencountermonster"><Button variant="danger">Create a New Monster!</Button></Link></h2>
+                    <h2>Monsters <Link to="/createencountermonster"><Button variant="danger">Create a New Monster!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
                     <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
-                        {selectedEncounter.monsters.length !== 0 ? monsters : <p>Create some monsters for your encounter and add them here!</p>}
+                        {selectedEncounter.monsters.length !== 0 ? <ul>{monsters}</ul> : <p>Create some monsters for your encounter and add them here!</p>}
                     </Container>
                </Col>
                 <Col>
                     <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
-                    {displayMonster !== null ? displayMonster : <p>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
+                        {displayMonster !== null ? displayMonster : <p>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
                     </Container>
                 </Col>
             </Row>
@@ -175,7 +151,6 @@ function EncounterPage(){
                         </div> : <div><p>Create a location for your encounter and add it!</p>
                         <Link to="/createencounterlocation"><Button>Create a New Location!</Button></Link>
                     </div>}
-                    {/* monster cards when created */}
                 </Col>
                 <Col md={6}>
                     <p>Interactive window that displays the location card in detail</p>
