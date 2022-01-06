@@ -1,16 +1,17 @@
 import LogoutButton from "../userAuth/LogoutButton";
-import EncounterCard from "../encounter/EncounterCard"
 import Icon from "../home/Icon";
+import SearchBar from "../home/SearchBar";
 import {Row, Container, Col, Button} from "react-bootstrap";
 import {UserContext} from "../context/userState";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import {useParams} from "react-router-dom"
 import paperBackground from '../assets/paperBackground.jpg'
-
+import EncounterDisplayContainer from "../encounter/EncounterDisplayContainer";
+import Filter from "../home/Filter";
 
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
@@ -18,13 +19,12 @@ const backgroundImageStyle = {
     backgroundSize: 'cover'
 }
 
-
-
-
 function CampaignPage(){
     const {user} = useContext(UserContext)
     const {selectedCampaign, setSelectedCampaign} = useContext(SelectedCampaignContext)
     const {encounters, setEncounters} = useContext(EncountersContext)
+    const [search, setSearch] = useState("")
+    const [selected, setSelected] = useState("all")
     const campaign = useParams()
 
     useEffect(() => {
@@ -50,9 +50,13 @@ function CampaignPage(){
     }
 
     //Encounter card mapping
-
-    const encounterCards = encounters?.map(enc => <EncounterCard key={enc.id} id={enc.id} handleDelete={handleDelete} encounter={enc} name={enc.name} image={enc.image} status={enc.status}/>)
-
+    const encountersToDisplay = encounters.filter(encounter => encounter.name.toLowerCase().includes(search.toLowerCase())).filter((encounter) => {
+        if(selected === "all"){
+            return true
+        } else {
+            return selected === encounter.status
+        }
+    })
 
     return(
         <Container className="mw-100" style={backgroundImageStyle}>
@@ -69,6 +73,16 @@ function CampaignPage(){
                 </Col> 
             </Row>
             <Row>
+                <Col>
+                    <SearchBar search={search} setSearch={setSearch}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Filter selected={selected} setSelected={setSelected}/>
+                </Col>
+            </Row>
+            <Row>
                 <Col sm={4}>
                     <h2>{selectedCampaign.name}</h2>
                     <h5>{selectedCampaign.description}</h5>
@@ -82,7 +96,7 @@ function CampaignPage(){
             </Row>
             <Row>
                 <Link to="/createencounter"><Button>Create a New Encounter</Button></Link>
-                {encounterCards}
+                <EncounterDisplayContainer handleDelete={handleDelete} encounters={encountersToDisplay}/>
             </Row>
         </Container>
     );
