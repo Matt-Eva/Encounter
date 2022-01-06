@@ -2,6 +2,7 @@ import {Form, Container, Row, Col} from "react-bootstrap"
 import {UserContext} from "../context/userState";
 import { useContext, useState } from "react";
 import LogoutButton from "../userAuth/LogoutButton";
+import Icon from "../home/Icon";
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import { useNavigate } from "react-router-dom"
@@ -18,7 +19,7 @@ function CreateEncounterPage(){
         description: "",
         image: "",
         notes: "",
-        status: ""
+        status: "active"
     }) 
     const navigate = useNavigate()
 
@@ -68,7 +69,7 @@ function CreateEncounterPage(){
         <Container>
             <Row>
                 <Col>
-                    Icon
+                    <Icon/>
                     Menu
                 </Col>
                 <Col>
@@ -96,10 +97,6 @@ function CreateEncounterPage(){
                     <Form.Group>
                         <Form.Label>Notes:</Form.Label>
                         <Form.Control type="text" name="notes" value={newEncounter.notes} placeholder="Any checks/things to note?" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Status:</Form.Label>
-                        <Form.Control type="text" name="status" value={newEncounter.status} placeholder="Is this encounter active or in-active?" />
                     </Form.Group>
                     <Form.Group>
                         <Form.Control type="submit" />
