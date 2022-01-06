@@ -1,5 +1,4 @@
 import LogoutButton from "../userAuth/LogoutButton";
-import EncounterCard from "../encounter/EncounterCard"
 import Icon from "../home/Icon";
 import SearchBar from "../home/SearchBar";
 import {Row, Container, Col, Button} from "react-bootstrap";
@@ -12,6 +11,7 @@ import { EncountersContext } from "../context/encountersState";
 import {useParams} from "react-router-dom"
 import paperBackground from '../assets/paperBackground.jpg'
 import EncounterDisplayContainer from "../encounter/EncounterDisplayContainer";
+import Filter from "../home/Filter";
 
 const backgroundImageStyle = {
     backgroundImage: `url(${paperBackground})`,
@@ -75,6 +75,11 @@ function CampaignPage(){
             <Row>
                 <Col>
                     <SearchBar search={search} setSearch={setSearch}/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Filter selected={selected} setSelected={setSelected}/>
                 </Col>
             </Row>
             <Row>
