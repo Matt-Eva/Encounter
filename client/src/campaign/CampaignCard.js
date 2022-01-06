@@ -3,6 +3,7 @@ import {SelectedCampaignContext} from "../context/selectedCampaignState"
 import {CampaignsContext} from "../context/campaignsState";
 import {EditCampaignContext} from "../context/editCampaignState"
 import {useContext} from "react"
+import {Button, Card, Row, Col, Container} from "react-bootstrap";
 
 function CampaignCard({campaign}){
     const {description, image, name, status} = campaign
@@ -20,25 +21,25 @@ function CampaignCard({campaign}){
         })
     }
 
-    function edit(){
-        setEditCampaign(campaign)
-    }
-
-   function handleViewCampaignOnClick(){
-        setSelectedCampaign(campaign)
-    }
-  
-
     return(
-        <div>
-            <h3>{name}</h3>
-            <img src={image} style={{"maxWidth": "200px"}}/>
-            <p style={{"maxWidth": "300px"}}>{description}</p>
-            <p>Status: {status}</p>
-            <button onClick={edit}><Link to="/editcampaign">Edit</Link></button>
-            <button onClick={handleViewCampaignOnClick}><Link to={`/campaign/${campaign.id}`}>View</Link></button>
-            <button onClick={() =>deleteCampaign(campaign.id)}>Delete</button>
-        </div>
+        <Card style={{"height": 500, width: '18rem'}} className="bg-tan">
+            <Card.Img src={image} alt="Image of the encounter" className="card-img-top img-fluid overflow-hidden"/>
+        <Card.Body>
+        <Card.Title>
+            {name}
+        </Card.Title>
+        <Card.Text>
+            Status: {status}
+        </Card.Text>
+        <Row>
+            <Col>
+                <Link to={`/campaign/${campaign.id}`}><Button onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
+                <Link to="/editcampaign"><Button onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
+                <Button onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
+            </Col>
+        </Row>
+        </Card.Body>
+    </Card>
     );
 }
 
