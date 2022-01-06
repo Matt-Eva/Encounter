@@ -1,9 +1,17 @@
 import CampaignCard from "./CampaignCard"
+import { Container, Row, Stack } from "react-bootstrap"
 
 function CampaignDisplayContainer({campaigns, search}){
     const campaignList = campaigns.map(campaign => <CampaignCard key={campaign.id} campaign={campaign}/>)
     return(
-        <div>{campaignList}</div>
+        <Container>
+            {/* <Row>
+                {campaignList}  
+            </Row> */}
+            <Stack direction="horizontal" gap="3">
+                {campaignList} 
+            </Stack>
+        </Container>
     );
 }
 
