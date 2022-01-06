@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import {SelectedCampaignContext} from "../context/selectedCampaignState"
 import {CampaignsContext} from "../context/campaignsState";
 import {EditCampaignContext} from "../context/editCampaignState"
-import {useContext} from "react"
+import {useContext, useState} from "react"
 import {Button, Card, Row, Col, Container} from "react-bootstrap";
 import paperBackground from '../assets/paperBackground.jpg'
 
@@ -17,7 +17,7 @@ const cardStyle = {
 }
 
 function CampaignCard({campaign}){
-    const {description, image, name, status} = campaign
+    const {image, name, status} = campaign
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
     const {setSelectedCampaign} = useContext(SelectedCampaignContext)
     const {setEditCampaign} = useContext(EditCampaignContext)
@@ -31,6 +31,39 @@ function CampaignCard({campaign}){
             const oneLess = campaigns.filter(campaign => campaign.id !== id)
             setCampaigns([...oneLess])
         })
+    }
+
+    function toggleStatus(){
+        let newStatus;
+        if (campaign.status === "archived"){
+            newStatus={
+                status: "active"
+            }
+        } else if(campaign.status ==="active"){
+            newStatus={
+                status: "archived"
+            }
+        }
+        const configObj ={
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(newStatus)
+        }
+        fetch(`/campaigns/${campaign.id}`, configObj)
+        .then(r => r.json())
+        .then(data =>{
+            const updCampaigns = campaigns.map(oldCampaign =>{
+                if (oldCampaign.id === data.id){
+                    return data
+                } else{
+                    return oldCampaign
+                }
+            })
+            setCampaigns([...updCampaigns])
+        })
+
     }
 
     return(
@@ -47,6 +80,7 @@ function CampaignCard({campaign}){
             <Col>
                 <Link to={`/campaign/${campaign.id}`}><Button onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
                 <Link to="/editcampaign"><Button onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
+                {status === "active"? <Button onClick={toggleStatus}>Archive</Button> : <Button onClick={toggleStatus}>Reactivate</Button>}
                 <Button onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
             </Col>
         </Row>
