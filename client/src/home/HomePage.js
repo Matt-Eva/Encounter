@@ -8,12 +8,12 @@ import {CampaignsContext} from "../context/campaignsState"
 import {EditCampaignContext} from "../context/editCampaignState"
 import { useContext, useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
-import paperBackground from '../assets/paperBackground.jpg'
+import parchmentBackground from '../assets/parchmentBackground.jpg'
 import Filter from "./Filter";
 
 
 const backgroundImageStyle = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
 }
