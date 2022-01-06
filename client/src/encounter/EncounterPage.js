@@ -1,4 +1,4 @@
-import {Button, Card, Row, Col, Container} from "react-bootstrap";
+import {Button, Card, Row, Col, Container, ListGroup, ListGroupItem} from "react-bootstrap";
 import LogoutButton from "../userAuth/LogoutButton";
 import {useContext, useEffect, useState} from "react"
 import {useParams, Link} from "react-router-dom"
@@ -15,15 +15,29 @@ const backgroundImageStyle = {
 
 
 function EncounterPage(){
-    const [display, setDisplay] = useState("description")
+    const [selectedNpc, setSelectedNpc] = useState(null)
     const{selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
     const encounter = useParams()
+
+    const npcs = selectedEncounter.npcs?.map(npc =>{
+        return <li onClick={() => setSelectedNpc(npc)}>{npc.name}</li>
+    })
+
+    let displayNpc = null;
+    if (selectedNpc !== null){
+        displayNpc = <div>
+            <h2>{selectedNpc.name}</h2>
+            <img src={selectedNpc.image}/>  
+            </div>
+    }
+
+    console.log(npcs)
     
-    const npcs = selectedEncounter.npcs?.map(npc => <div>
-        <h4>{npc.name}</h4>
-        <img src={npc.image} style={{"maxWidth" : "200px"}}/>
-        <p>{npc.description}</p>
-        </div>)
+    // const npcs = selectedEncounter.npcs?.map(npc => <div>
+    //     <h4>{npc.name}</h4>
+    //     <img src={npc.image} style={{"maxWidth" : "200px"}}/>
+    //     <p>{npc.description}</p>
+    //     </div>)
 
     const monsters = selectedEncounter.monsters?.map(monster => <div>
         <h4>{monster.name}</h4>
@@ -42,7 +56,8 @@ function EncounterPage(){
         .then(r => r.json())
         .then(data => {
             setSelectedEncounter(data)
-            console.log("selectedEnc:", data)
+            setSelectedNpc(data.npcs[0])
+            // console.log("selectedEnc:", data)
         })
     }, [])
 
@@ -88,6 +103,7 @@ function EncounterPage(){
                     <h2>Notes</h2>
                     <p>{selectedEncounter.notes}</p>
                 </Col>
+            <Row>    
                 <Col md={6}>
                     <h2>Inventory</h2>
                     {selectedEncounter.items.length !== 0 ? items : <p>Create some items for your encounter and add them here!</p>}
@@ -95,14 +111,18 @@ function EncounterPage(){
                     {/* Item Cards when Created */}
                 </Col>
             </Row>
+            </Row>
             <Row>
                 <Col md={6}>
                     <h2>Npcs</h2>
-                    {selectedEncounter.npcs.length !== 0 ? npcs : <p>Create some NPCs for your encounter and add them here!</p>}
+                    {selectedEncounter.npcs.length !== 0 ? null : <p>Create some NPCs for your encounter and add them here!</p>}
                     <Link to="/createencounternpc"><Button>Create a New NPC!</Button></Link>
+                    <ul>
+                        {npcs}
+                    </ul>
                 </Col>
                 <Col md={6}>
-                    <p>Interactive window that displays the npc card in detail</p>
+                    {displayNpc}
                 </Col>
             </Row>
             <Row>
