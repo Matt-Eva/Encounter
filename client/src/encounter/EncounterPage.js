@@ -14,19 +14,19 @@ function EncounterPage(){
     
     const npcs = selectedEncounter.npcs?.map(npc => <div>
         <h4>{npc.name}</h4>
-        <img src={npc.image} style={{"max-width" : "200px"}}/>
+        <img src={npc.image} style={{"maxWidth" : "200px"}}/>
         <p>{npc.description}</p>
         </div>)
 
     const monsters = selectedEncounter.monsters?.map(monster => <div>
         <h4>{monster.name}</h4>
-        <img src={monster.image} style={{"max-width" : "200px"}}/>
+        <img src={monster.image} style={{"maxWidth" : "200px"}}/>
         <p>{monster.description}</p>
         </div>)
 
     const items = selectedEncounter.items?.map(item => <div>
         <h4>{item.name}</h4>
-        <img src={item.image} style={{"max-width" : "200px"}}/>
+        <img src={item.image} style={{"maxWidth" : "200px"}}/>
         <p>{item.description}</p>
         </div>)
 
@@ -35,6 +35,7 @@ function EncounterPage(){
         .then(r => r.json())
         .then(data => {
             setSelectedEncounter(data)
+            console.log("selectedEnc:", data)
         })
     }, [])
 
@@ -68,7 +69,7 @@ function EncounterPage(){
             <Row>
                 <Col>
                     <h2>{selectedEncounter.name}</h2>
-                    <p>Location: {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> : <p>No location specified</p>}</p>
+                    <h6>Location: {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> : <p>No location specified</p>}</h6>
                     <p>{selectedEncounter.description}</p>
                 </Col>
                 <Col>
@@ -110,7 +111,11 @@ function EncounterPage(){
             <Row>
                 <Col md={6}>
                     <h2>Location</h2>
-                    {selectedEncounter.location ? null : <div><p>Create a location for your encounter and add it!</p>
+                    {selectedEncounter.location ? <div>
+                        <h4>{selectedEncounter.location.name}</h4>
+                        <img src={selectedEncounter.location.image} style={{"maxWidth" : "200px"}}/>
+                        <p>{selectedEncounter.location.description}</p>
+                        </div> : <div><p>Create a location for your encounter and add it!</p>
                         <Link to="/createencounterlocation"><Button>Create a New Location!</Button></Link>
                     </div>}
                     {/* monster cards when created */}

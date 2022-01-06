@@ -14,6 +14,7 @@ import EditEncounterPage from './encounter/EditEncounterPage';
 import EncounterNpcPage from "./npc/EncounterNpcPage";
 import EncounterMonsterPage from './monster/EncounterMonsterPage';
 import EncounterItemPage from './item/EncounterItemPage';
+import EncounterLocationPage from './location/EncounterLocationPage';
 
 function App() {
   const {setUser} = useContext(UserContext)
@@ -44,6 +45,7 @@ function App() {
         <Route path="encounter/:id" element={<EncounterPage/>}/>
         <Route exact path="/createencounter" element={<CreateEncounterPage/>}/>
         <Route path="/editencounter" element={<EditEncounterPage/>}/>
+        <Route path="/createencounterlocation" element={<EncounterLocationPage/>}/>
         <Route path="/createencounteritem" element={<EncounterItemPage/>}/>
         <Route path="/createencounternpc" element={<EncounterNpcPage/>}/>
         <Route path="/createencountermonster" element={<EncounterMonsterPage/>}/>
