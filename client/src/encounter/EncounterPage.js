@@ -15,6 +15,7 @@ const backgroundImageStyle = {
 
 function EncounterPage(){
     const [selectedNpc, setSelectedNpc] = useState(null)
+    const [selectedMonster, setSelectedMonster] = useState(null)
     const{selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
     const encounter = useParams()
 
@@ -22,17 +23,27 @@ function EncounterPage(){
         return <li onClick={() => setSelectedNpc(npc)}>{npc.name}</li>
     })
 
+    const monsters = selectedEncounter.monsters?.map(monster =>{
+        return <li onClick={() => setSelectedMonster(monster)}>{monster.name}</li>
+    })
+
     let displayNpc = null;
     if (selectedNpc !== null){
         displayNpc = <div overflow="scroll">
             <h2>{selectedNpc.name}</h2>
-            <img src={selectedNpc.image}/>
+            <img src={selectedNpc.image} style={{"maxWidth": "400px", "maxHeight": "600px"}}/>
             <p>{selectedNpc.description}</p>  
             </div>
     }
 
-    console.log(npcs)
-    console.log(selectedNpc)
+    let displayMonster = null;
+    if (selectedMonster !== null){
+        displayMonster = <div overflow="scroll">
+            <h2>{selectedMonster.name}</h2>
+            <img src={selectedMonster.image} style={{"maxWidth": "400px", "maxHeight": "600px"}}/>
+            <p>{selectedMonster.description}</p>  
+            </div>
+    }
     
     // const npcs = selectedEncounter.npcs?.map(npc => <div>
     //     <h4>{npc.name}</h4>
@@ -40,11 +51,11 @@ function EncounterPage(){
     //     <p>{npc.description}</p>
     //     </div>)
 
-    const monsters = selectedEncounter.monsters?.map(monster => <div>
-        <h4>{monster.name}</h4>
-        <img src={monster.image} style={{"maxWidth" : "200px"}}/>
-        <p>{monster.description}</p>
-        </div>)
+    // const monsters = selectedEncounter.monsters?.map(monster => <div>
+    //     <h4>{monster.name}</h4>
+    //     <img src={monster.image} style={{"maxWidth" : "200px"}}/>
+    //     <p>{monster.description}</p>
+    //     </div>)
 
     const items = selectedEncounter.items?.map(item => <div>
         <h4>{item.name}</h4>
@@ -59,6 +70,9 @@ function EncounterPage(){
             setSelectedEncounter(data)
             if (data.npcs.length !== 0){
                 setSelectedNpc(data.npcs[0])
+            }
+            if(data.monsters.length !== 0){
+                setSelectedMonster(data.monsters[0])
             }
         })
     }, [])
@@ -105,6 +119,7 @@ function EncounterPage(){
                     <h2>Notes</h2>
                     <p>{selectedEncounter.notes}</p>
                 </Col>
+            </Row>
             <Row>    
                 <Col md={6}>
                     <h2>Inventory</h2>
@@ -113,13 +128,15 @@ function EncounterPage(){
                     {/* Item Cards when Created */}
                 </Col>
             </Row>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <h2>Npcs <Link to="/createencounternpc"><Button variant="danger">Create a New NPC!</Button></Link></h2>
+                </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
                     <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
-                    <h2>Npcs</h2>
                     {selectedEncounter.npcs.length !== 0 ? null : <p>Create some NPCs for your encounter and add them here!</p>}
-                    <Link to="/createencounternpc"><Button>Create a New NPC!</Button></Link>
                     <ul>
                         {npcs}
                     </ul>
@@ -131,14 +148,21 @@ function EncounterPage(){
                     </Container>
                 </Col>
             </Row>
-            <Row>
-                <Col md={6}>
-                    <h2>Monsters</h2>
-                    {selectedEncounter.monsters.length !== 0 ? monsters : <p>Create some monsters for your encounter and add them here!</p>}
-                    <Link to="/createencountermonster"><Button>Create a New Monster!</Button></Link>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                <h2>Monsters <Link to="/createencountermonster"><Button variant="danger">Create a New Monster!</Button></Link></h2>
                 </Col>
-                <Col md={6}>
-                    <p>Interactive window that displays the monster card in detail</p>
+            </Row>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                        {selectedEncounter.monsters.length !== 0 ? monsters : <p>Create some monsters for your encounter and add them here!</p>}
+                    </Container>
+               </Col>
+                <Col>
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    {displayMonster !== null ? displayMonster : <p>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
+                    </Container>
                 </Col>
             </Row>
             <Row>
