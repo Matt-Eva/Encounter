@@ -13,7 +13,6 @@ const backgroundImageStyle = {
     minHeight: "100vh"
 }
 
-
 function EncounterPage(){
     const [selectedNpc, setSelectedNpc] = useState(null)
     const{selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
@@ -25,13 +24,15 @@ function EncounterPage(){
 
     let displayNpc = null;
     if (selectedNpc !== null){
-        displayNpc = <div>
+        displayNpc = <div overflow="scroll">
             <h2>{selectedNpc.name}</h2>
-            <img src={selectedNpc.image}/>  
+            <img src={selectedNpc.image}/>
+            <p>{selectedNpc.description}</p>  
             </div>
     }
 
     console.log(npcs)
+    console.log(selectedNpc)
     
     // const npcs = selectedEncounter.npcs?.map(npc => <div>
     //     <h4>{npc.name}</h4>
@@ -56,8 +57,9 @@ function EncounterPage(){
         .then(r => r.json())
         .then(data => {
             setSelectedEncounter(data)
-            setSelectedNpc(data.npcs[0])
-            // console.log("selectedEnc:", data)
+            if (data.npcs.length !== 0){
+                setSelectedNpc(data.npcs[0])
+            }
         })
     }, [])
 
@@ -95,7 +97,7 @@ function EncounterPage(){
                     <p>{selectedEncounter.description}</p>
                 </Col>
                 <Col>
-                    <img src={selectedEncounter.image}/>
+                    <img src={selectedEncounter.image} style={{"maxWidth": "500px"}}/>
                 </Col>
             </Row>
             <Row>
@@ -112,17 +114,21 @@ function EncounterPage(){
                 </Col>
             </Row>
             </Row>
-            <Row>
-                <Col md={6}>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
                     <h2>Npcs</h2>
                     {selectedEncounter.npcs.length !== 0 ? null : <p>Create some NPCs for your encounter and add them here!</p>}
                     <Link to="/createencounternpc"><Button>Create a New NPC!</Button></Link>
                     <ul>
                         {npcs}
                     </ul>
+                    </Container>
                 </Col>
-                <Col md={6}>
-                    {displayNpc}
+                <Col>
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                        {displayNpc !== null ? displayNpc : <p>Once you have created/added an Npc, you can click on their name to the left and see their details!</p>}
+                    </Container>
                 </Col>
             </Row>
             <Row>
