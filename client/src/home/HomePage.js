@@ -16,7 +16,10 @@ const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    padding: "10px"
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'fixed',
+    minHeight: "100%",
+    position: "absolute"
 }
 
 function HomePage(){
@@ -55,7 +58,7 @@ function HomePage(){
       }
 
     return(
-        <Container style={backgroundImageStyle} className="mw-100 vh-100">
+        <Container style={backgroundImageStyle} className="mw-100">
             <Row className="justify-content-center" style={{"margin": "0px 10px 20px 10px"}}>
                 <Col className="border-bottom border-dark" style={{"textAlign": "left"}}>
                     <Icon/>

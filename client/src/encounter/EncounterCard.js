@@ -62,7 +62,7 @@ function EncounterCard({id, name, handleDelete, status, image, encounter}){
 
     return(
         <Card style={cardStyle} className="border border-dark">
-            <img src={image} alt="Image of the encounter" className="card-img-top"/>
+            <img src={image} alt="Image of the encounter" style={{"maxHeight": "300px"}} className="card-img-top"/>
             <Card.Title>
                 {name}
             </Card.Title>
