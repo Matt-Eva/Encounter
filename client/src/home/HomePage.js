@@ -56,15 +56,15 @@ function HomePage(){
 
     return(
         <Container style={backgroundImageStyle} className="mw-100 vh-100">
-            <Row className="justify-content-center" style={{"marginBottom": "20px"}}>
-                <Col style={{"textAlign": "left"}}>
+            <Row className="justify-content-center" style={{"margin": "0px 10px 20px 10px"}}>
+                <Col className="border-bottom border-dark" style={{"textAlign": "left"}}>
                     <Icon/>
                 </Col>
-                <Col className="text-center">
+                <Col className="text-center border-bottom border-dark" >
                    <h1>Encounter</h1>
                    <h5>Welcome, {user.dm_name}</h5>
                 </Col>
-                <Col style={{"textAlign": "right"}}>
+                <Col  className="border-bottom border-dark" style={{"textAlign": "right"}}>
                     <LogoutButton/>
                 </Col> 
             </Row>
