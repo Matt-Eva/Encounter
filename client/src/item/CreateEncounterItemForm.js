@@ -1,17 +1,23 @@
 import { Form, Container } from "react-bootstrap"
-import { useState } from "react";
-import {useContext} from "react"
+import {useContext, useState, useEffect} from "react"
 import {SelectedEncounterContext} from "../context/selectedEncounterState"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CreateEncounterItemForm(){
-    const {selectedEncounter} = useContext(SelectedEncounterContext)
+    const {selectedEncounter, setSelectedEncounter} = useContext(SelectedEncounterContext)
     const navigate = useNavigate()
+    const enc = useParams()
     const [form, setForm] = useState({
         name: "",
         image: "",
         description: ""
     })
+
+    useEffect(() => {
+        fetch(`/encs/${enc.id}`)
+        .then(r => r.json())
+        .then(data => setSelectedEncounter(data))
+    }, [])
 
     function handleChange(e){
         setForm({

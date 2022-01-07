@@ -145,7 +145,7 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Items <Link to="/createencounteritem"><Button variant="danger">Create a New Item!</Button></Link></h2>
+                    <h2>Items <Link to={`/createencounteritem/${selectedEncounter.id}`}><Button variant="danger">Create a New Item!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
