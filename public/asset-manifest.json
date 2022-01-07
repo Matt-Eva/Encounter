@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bff57b12.css",
+    "main.js": "/static/js/main.f314478d.js",
+    "static/media/berserker.jpg": "/static/media/berserker.c6128e3c6934faa280d6.jpg",
+    "static/media/paperBackground.jpg": "/static/media/paperBackground.94529d6265110636c94d.jpg",
+    "static/media/parchmentBackground.jpg": "/static/media/parchmentBackground.f52a79b7ab7387475ee4.jpg",
+    "static/media/cardBackground.jpg": "/static/media/cardBackground.410215b1302ff6383609.jpg",
+    "index.html": "/index.html",
+    "main.bff57b12.css.map": "/static/css/main.bff57b12.css.map",
+    "main.f314478d.js.map": "/static/js/main.f314478d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bff57b12.css",
+    "static/js/main.f314478d.js"
+  ]
+}
