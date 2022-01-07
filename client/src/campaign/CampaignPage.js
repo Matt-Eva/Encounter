@@ -9,15 +9,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import {useParams} from "react-router-dom"
-import paperBackground from '../assets/paperBackground.jpg'
+import parchmentBackground from '../assets/parchmentBackground.jpg'
 import EncounterDisplayContainer from "../encounter/EncounterDisplayContainer";
 import Filter from "../home/Filter";
 
 const backgroundImageStyle = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    minHeight: "100vh"
+    minHeight: "100vh",
+    padding: "30px"
 }
 
 function CampaignPage(){
@@ -81,7 +82,7 @@ function CampaignPage(){
                     <h5>Status: {selectedCampaign.status}</h5>
                 </Col>
                 <Col sm={6} >
-                    <img src={selectedCampaign.image} alt="picture of campaign image" className="img-fluid"/>
+                    <img src={selectedCampaign.image} alt="picture of campaign image" className="img-fluid" style={{"maxWidth": "500px"}}/>
                 </Col>
             </Row>
             <Row>
