@@ -7,6 +7,7 @@ import Icon from "../home/Icon";
 import parchmentBackground from '../assets/parchmentBackground.jpg'
 import cardBackground from '../assets/cardBackground.jpg'
 
+
 const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
