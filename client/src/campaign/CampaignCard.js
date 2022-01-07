@@ -72,7 +72,7 @@ function CampaignCard({campaign}){
 
     return(
         <Card style={cardStyle} className="border border-dark">
-            <Card.Img src={image} alt="Image of the encounter" className="card-img-top img-fluid overflow-hidden border border-dark"/>
+            <Card.Img src={image} style={{"maxHeight": "300px"}} alt="Image of the encounter" className="card-img-top img-fluid border border-dark"/>
         <Card.Body>
         <Card.Title>
             {name}
