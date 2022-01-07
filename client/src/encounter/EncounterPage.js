@@ -91,8 +91,9 @@ function EncounterPage(){
                 <Col style={{"text-align" : "left"}} className="border-bottom border-dark">
                     <Icon/>
                 </Col>
-                <Col style={{"text-align" : "center"}} className="border-bottom border-dark">
-                    <Link to={`/campaign/${selectedEncounter.campaign.id}`} style={{"color": "black", "text-decoration": "none"}}><h1>{selectedEncounter.campaign.name}</h1></Link>
+                <Col xs={6} style={{"text-align" : "center"}} className="border-bottom border-dark">
+                    <Link to={`/campaign/${selectedEncounter.campaign.id}`} style={{"color": "black", "text-decoration": "none"}}><h1>{selectedEncounter.campaign.name}:</h1></Link>
+                    <h2>{selectedEncounter.name}</h2>
                 </Col>
                 <Col style={{"text-align" : "right"}} className="border-bottom border-dark">
                     <LogoutButton />

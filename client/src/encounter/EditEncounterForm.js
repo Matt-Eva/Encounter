@@ -41,7 +41,7 @@ function EditEncounterForm({encounter}){
     }
 
     return(
-        <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e)=>handleSubmit(e, form)}>
+        <Form  onChange={handleChange} onSubmit={(e)=>handleSubmit(e, form)}>
                     <Form.Group>
                         <Form.Label>Encounter Title:</Form.Label>
                         <Form.Control type="text" name="name" value={form.name}  placeholder="Choose your encounter's title!" />
