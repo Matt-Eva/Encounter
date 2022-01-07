@@ -62,41 +62,42 @@ function CampaignPage(){
 
     return(
         <Container className="mw-100" style={backgroundImageStyle}>
-            <Row>
-                <Col>
+            <Row style={{"margin": "0px 0px 20px 0px"}}>
+                <Col className="border-bottom border-dark">
                     <Icon/>
                 </Col>
-                <Col>
-                <h1>Campaign</h1>
+                <Col xs={6} className="border-bottom border-dark" style={{"textAlign": "center"}}>
+                <h1>Campaign:</h1>
+                <h2>{selectedCampaign.name}</h2>
                 </Col>
-                <Col>
+                <Col className="border-bottom border-dark" style={{"textAlign": "right"}}>
                     <LogoutButton/>
                 </Col> 
             </Row>
             <Row>
-                <Col sm={4}>
+                <Col sm={7}>
                     <h2>{selectedCampaign.name}</h2>
+                    <h4>Status: {selectedCampaign.status}</h4>
                     <h5>{selectedCampaign.description}</h5>
                 </Col>
-                <Col>
-                    <h5>Status: {selectedCampaign.status}</h5>
-                </Col>
-                <Col sm={6} >
+                <Col sm={4} >
                     <img src={selectedCampaign.image} alt="picture of campaign image" className="img-fluid" style={{"maxWidth": "500px"}}/>
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col style={{"margin": "20px 56% 10px 0%"}}>
                     <SearchBar search={search} setSearch={setSearch}/>
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col >
                     <Filter selected={selected} setSelected={setSelected}/>
                 </Col>
             </Row>
             <Row>
                 <Link to="/createencounter"><Button variant="danger">Create a New Encounter</Button></Link>
+                <br/>
+                <br/>
                 <EncounterDisplayContainer handleDelete={handleDelete} encounters={encountersToDisplay}/>
             </Row>
         </Container>

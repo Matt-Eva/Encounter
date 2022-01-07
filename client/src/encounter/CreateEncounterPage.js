@@ -82,7 +82,7 @@ function CreateEncounterPage(){
                 <Col>
                     <Icon/>
                 </Col>
-                <Col style={{"textAlign": "center"}}>
+                <Col xs={6} style={{"textAlign": "center"}}>
                    <h1 style={{"cursor": "pointer"}} onClick={() =>navigate(`/campaign/${selectedCampaign.id}`)}>{selectedCampaign.name}:</h1>
                    <h2>Create a New Encounter</h2>
                 </Col>

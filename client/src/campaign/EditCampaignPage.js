@@ -11,6 +11,7 @@ const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+    padding: "10px",
     minHeight: "100vh",
     minWidth: "100%"
 }
@@ -27,7 +28,7 @@ function EditCampaignPage(){
                 <Col>
                 <h1>Edit {editCampaign.name}</h1>
                 </Col>
-                <Col>
+                <Col style={{"textAlign": "right"}}>
                     <LogoutButton/>
                 </Col>
             </Row>
