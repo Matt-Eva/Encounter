@@ -14,7 +14,9 @@
  }
 
  const backgroundImageStyle = {
-     backgroundImage: `url(${berserker})`
+     backgroundImage: `url(${berserker})`,
+     backgroundRepeat: 'no-repeat',
+     backgroundSize: 'cover'
  }
 
 function Login(){
@@ -68,7 +70,7 @@ function Login(){
     return(
         <Container className="mw-100">
             <Row>
-                <Col sm={4} md={4} lg={4} style={formBackgroundStyle} className="vh-100">
+                <Col sm={9} md={7} lg={5} xl={3} style={formBackgroundStyle} className="vh-100">
                     <h1>D&D: Encounter</h1>
                     <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
                         <Form.Group>
