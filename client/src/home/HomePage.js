@@ -8,12 +8,12 @@ import {CampaignsContext} from "../context/campaignsState"
 import {EditCampaignContext} from "../context/editCampaignState"
 import { useContext, useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
-import paperBackground from '../assets/paperBackground.jpg'
+import parchmentBackground from '../assets/parchmentBackground.jpg'
 import Filter from "./Filter";
 
 
 const backgroundImageStyle = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
 }
@@ -61,7 +61,7 @@ function HomePage(){
                 </Col>
                 <Col className="text-center">
                    <h1>Encounter</h1>
-                   <h3>Welcome {user.dm_name}</h3>
+                   <h5>Welcome, {user.dm_name}</h5>
                 </Col>
                 <Col className="text-center">
                     <LogoutButton/>
@@ -69,7 +69,7 @@ function HomePage(){
             </Row>
             <Row className="justify-content-center">
                 <Col className="text-center">
-                    My Campaigns
+                    <h1>My Campaigns</h1>
                 </Col>
             </Row>
             <Row className="justify-content-center">
@@ -77,7 +77,7 @@ function HomePage(){
                     <SearchBar search={search} setSearch={setSearch}/>
                 </Col>
                 <Col className="text-center">
-                <Link to="/createcampaign"><Button variant="danger" className="text-dark" onClick={create}>Create New Campaign</Button></Link>
+                <Link to="/createcampaign"><Button variant="danger" onClick={create}>Create New Campaign</Button></Link>
                 </Col>
             </Row>
             <Row className="justify-content-center">

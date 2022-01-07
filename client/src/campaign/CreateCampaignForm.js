@@ -1,6 +1,7 @@
 import { useState } from "react"
 import {CampaignsContext} from "../context/campaignsState"
 import {useContext} from "react";
+import { Form } from "react-bootstrap"
 
 function CreateCampaignForm(){
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
@@ -43,12 +44,23 @@ function CreateCampaignForm(){
      }
 
     return(
-        <form onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
-            <input type="text" name="name" value={form.name} placeholder="Campaign Title"/>
-            <input type="text" name="image" value={form.image} placeholder="Campaign Image URL"/>
-            <textarea name="description" value={form.description} placeholder="Campaign Description"/>
-            <button type="submit">Create</button>
-        </form>
+        <Form onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
+            <Form.Group>
+                <Form.Label>Title:</Form.Label>
+                <Form.Control type="text" name="name" value={form.name} placeholder="Campaign Title"/> 
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Image:</Form.Label>
+                <Form.Control type="text" name="image" value={form.image} placeholder="Campaign Image"/> 
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Description:</Form.Label>
+                <Form.Control as="textarea" name="description" value={form.description} placeholder="Campaign Description"/> 
+            </Form.Group>
+            <Form.Group>
+                <Form.Control type="submit"/>
+            </Form.Group>
+        </Form>
     );
 }
 
