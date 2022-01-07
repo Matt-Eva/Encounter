@@ -12,9 +12,8 @@ const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    padding: "10px",
     minHeight: "100vh",
-    minWidth: "100%"
+    padding: "30px"
 }
 
 function EditEncounterPage(){
@@ -23,7 +22,7 @@ function EditEncounterPage(){
     const {selectedCampaign} = useContext(SelectedCampaignContext)
     console.log(editEncounter)
     return(
-        <Container style={backgroundImageStyle}>
+        <Container style={backgroundImageStyle} className="mw-100">
             <Row >
                 <Col>
                     <Icon/>
