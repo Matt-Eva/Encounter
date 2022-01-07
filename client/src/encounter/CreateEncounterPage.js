@@ -15,7 +15,6 @@ const backgroundImageStyle = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     minHeight: "100vh",
-    minWidth: "100%"
 }
 
 
@@ -77,7 +76,7 @@ function CreateEncounterPage(){
     }
 
     return(
-        <Container style={backgroundImageStyle}>
+        <Container style={backgroundImageStyle} className="mw-100">
             <Row>
                 <Col>
                     <Icon/>
