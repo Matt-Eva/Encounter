@@ -9,7 +9,8 @@
  const formBackgroundStyle = {
      backgroundImage: `url(${paperBackground})`,
      backgroundRepeat: 'no-repeat',
-     backgroundSize: 'cover'
+     backgroundSize: 'cover',
+     padding: "50px"
  }
 
  const backgroundImageStyle = {
@@ -68,7 +69,7 @@ function Login(){
         <Container className="mw-100">
             <Row>
                 <Col sm={4} md={4} lg={4} style={formBackgroundStyle} className="vh-100">
-                    <h1>D&D Encounter</h1>
+                    <h1>D&D: Encounter</h1>
                     <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
                         <Form.Group>
                             <Form.Label>Username:</Form.Label>
@@ -78,10 +79,14 @@ function Login(){
                             <Form.Label>Password:</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Enter your password here." value={form.password}/>
                         </Form.Group>
+                        <br/>
+                       
                         <Button variant="secondary" type="submit">Login</Button>
+                        <br/>
+                        <br/>
                     </Form>
                     {errors ? displayErrors: null }
-                    <Link to="/signup">New to Encounter? Click here to sign up!</Link>
+                    <Link style={{"color": "black"}} to="/signup">New to Encounter? Click here to sign up!</Link>
                 </Col>
                 <Col style={backgroundImageStyle}>
                 </Col>
