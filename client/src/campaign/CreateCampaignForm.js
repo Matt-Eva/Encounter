@@ -2,9 +2,11 @@ import { useState } from "react"
 import {CampaignsContext} from "../context/campaignsState"
 import {useContext} from "react";
 import { Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 function CreateCampaignForm(){
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         name:"",
         description: "",
@@ -40,6 +42,7 @@ function CreateCampaignForm(){
                 image: "",
                 status: "active"
             })
+            navigate("/home")
          })
      }
 
