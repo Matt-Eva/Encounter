@@ -61,7 +61,7 @@ function HomePage(){
                 </Col>
                 <Col className="text-center">
                    <h1>Encounter</h1>
-                   <h3>Welcome {user.dm_name}</h3>
+                   <h5>Welcome, {user.dm_name}</h5>
                 </Col>
                 <Col className="text-center">
                     <LogoutButton/>
@@ -69,7 +69,7 @@ function HomePage(){
             </Row>
             <Row className="justify-content-center">
                 <Col className="text-center">
-                    My Campaigns
+                    <h1>My Campaigns</h1>
                 </Col>
             </Row>
             <Row className="justify-content-center">
@@ -77,7 +77,7 @@ function HomePage(){
                     <SearchBar search={search} setSearch={setSearch}/>
                 </Col>
                 <Col className="text-center">
-                <Link to="/createcampaign"><Button variant="danger" className="text-dark" onClick={create}>Create New Campaign</Button></Link>
+                <Link to="/createcampaign"><Button variant="danger" onClick={create}>Create New Campaign</Button></Link>
                 </Col>
             </Row>
             <Row className="justify-content-center">
