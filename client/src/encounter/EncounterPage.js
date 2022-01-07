@@ -103,7 +103,7 @@ function EncounterPage(){
                 <Col>
                     <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
                     <h2>{selectedEncounter.name}</h2>
-                    {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> :<h6>Location: No location specified.</h6>}
+                    {selectedEncounter.location ? <p>Location: {selectedEncounter.location.name}</p> :<h6>Location: No location specified.</h6>}
                     <p>{selectedEncounter.description}</p>
                     </Container>
                 </Col>

@@ -29,7 +29,7 @@ function CampaignCard({campaign}){
 
 
     function deleteCampaign(id){
-        fetch(`campaigns/${id}`, {method: "DELETE"})
+        fetch(`/campaigns/${id}`, {method: "DELETE"})
         .then(() =>{
             alert(`${campaign.name} deleted.`)
             const oneLess = campaigns.filter(campaign => campaign.id !== id)
