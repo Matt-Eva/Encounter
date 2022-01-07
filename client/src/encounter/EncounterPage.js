@@ -5,12 +5,17 @@ import {useParams, Link} from "react-router-dom"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import Icon from "../home/Icon";
 import parchmentBackground from '../assets/parchmentBackground.jpg'
+import cardBackground from '../assets/cardBackground.jpg'
+
 
 const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    minHeight: "100vh"
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'fixed',
+    minHeight: "100%",
+    position: "absolute"
 }
 
 function EncounterPage(){
@@ -58,12 +63,6 @@ function EncounterPage(){
             <p>{selectedItem.description}</p>  
             </div>
     }
-    
-    // const items = selectedEncounter.items?.map(item => <div>
-    //     <h4>{item.name}</h4>
-    //     <img src={item.image} style={{"maxWidth" : "200px"}}/>
-    //     <p>{item.description}</p>
-    //     </div>)
 
     useEffect(() => {
         fetch(`/encs/${encounter.id}`)
@@ -88,26 +87,27 @@ function EncounterPage(){
 
     return(
         <Container className="mw-100" style={backgroundImageStyle}>
-            <Row>
-                <Col>
+            <Row style={{"margin" : "10px"}}>
+                <Col style={{"text-align" : "left"}} className="border-bottom border-dark">
                     <Icon/>
                 </Col>
-                <Col>
+                <Col style={{"text-align" : "center"}} className="border-bottom border-dark">
                     <Link to={`/campaign/${selectedEncounter.campaign.id}`} style={{"color": "black", "text-decoration": "none"}}><h1>{selectedEncounter.campaign.name}</h1></Link>
-                    {/* {campaign ? <h1>{campaign}</h1> : null} */}
                 </Col>
-                <Col>
+                <Col style={{"text-align" : "right"}} className="border-bottom border-dark">
                     <LogoutButton />
                 </Col>
             </Row>
-            <Row>
+            <Row style={{"margin" : "10px"}}>
                 <Col>
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
                     <h2>{selectedEncounter.name}</h2>
-                    <h6>Location: {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> : <p>No location specified</p>}</h6>
+                    {selectedEncounter.location ? <p>{selectedEncounter.location.name}</p> :<h6>Location: No location specified.</h6>}
                     <p>{selectedEncounter.description}</p>
+                    </Container>
                 </Col>
-                <Col>
-                    <img src={selectedEncounter.image} style={{"maxWidth": "500px"}}/>
+                <Col style={{"text-align" : "right"}}>
+                    <img src={selectedEncounter.image} style={{"maxWidth": "90%"}}/>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
@@ -117,27 +117,26 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                    <p>{selectedEncounter.notes}</p>
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        <p style={{"fontSize": "26px"}}>{selectedEncounter.notes}</p>
                     </Container>
                 </Col>
             </Row>
             {/* Break */}
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Location</h2>
+                    {selectedEncounter.location !== null ? <h2>Location</h2> : <h2>Location <Link to="/createencounterlocation"><Button variant="danger">Create an Encounter Location!</Button></Link></h2>}
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
                         <Col>
                         {selectedEncounter.location ? <div>
                             <h4>{selectedEncounter.location.name}</h4>
                             <img src={selectedEncounter.location.image} style={{"maxWidth" : "200px"}}/>
-                            <p>{selectedEncounter.location.description}</p>
-                            </div> : <div><p>Create a location for your encounter and add it!</p>
-                            <Link to="/createencounterlocation"><Button>Create a New Location!</Button></Link>
+                            <p style={{"fontSize": "26px"}}>{selectedEncounter.location.description}</p>
+                            </div> : <div><p style={{"fontSize": "26px"}}>Create a location for your encounter and add it!</p>
                         </div>}
                         </Col>
                     </Container>
@@ -150,13 +149,13 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                        {selectedEncounter.items.length !== 0 ? <ul>{items}</ul> : <p>Create some Items for your encounter and add them here!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        {selectedEncounter.items.length !== 0 ? <ul>{items}</ul> : <p style={{"fontSize": "26px"}}>Create some Items for your encounter and add them here!</p>}
                     </Container>
                 </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                        {displayItem !== null ? displayItem : <p>Once you have created/added an Item, you can click on their name to the left and see its details!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        {displayItem !== null ? displayItem : <p style={{"fontSize": "26px"}}>Once you have created/added an Item, you can click on their name to the left and see its details!</p>}
                     </Container>
                 </Col>    
             </Row>
@@ -167,13 +166,13 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                    {selectedEncounter.npcs.length !== 0 ? <ul>{npcs}</ul> : <p>Create some NPCs for your encounter and add them here!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                    {selectedEncounter.npcs.length !== 0 ? <ul>{npcs}</ul> : <p style={{"fontSize": "26px"}}>Create some NPCs for your encounter and add them here!</p>}
                     </Container>
                 </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                        {displayNpc !== null ? displayNpc : <p>Once you have created/added an Npc, you can click on their name to the left and see their details!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        {displayNpc !== null ? displayNpc : <p style={{"fontSize": "26px"}}>Once you have created/added an Npc, you can click on their name to the left and see their details!</p>}
                     </Container>
                 </Col>
             </Row>
@@ -184,13 +183,13 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                        {selectedEncounter.monsters.length !== 0 ? <ul>{monsters}</ul> : <p>Create some monsters for your encounter and add them here!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        {selectedEncounter.monsters.length !== 0 ? <ul>{monsters}</ul> : <p style={{"fontSize": "26px"}}>Create some monsters for your encounter and add them here!</p>}
                     </Container>
                </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
-                        {displayMonster !== null ? displayMonster : <p>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
+                        {displayMonster !== null ? displayMonster : <p style={{"fontSize": "26px"}}>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
                     </Container>
                 </Col>
             </Row>
