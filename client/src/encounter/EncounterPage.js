@@ -126,7 +126,7 @@ function EncounterPage(){
             {/* Break */}
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    {selectedEncounter.location !== null ? <h2>Location</h2> : <h2>Location <Link to="/createencounterlocation"><Button variant="danger">Create an Encounter Location!</Button></Link></h2>}
+                    {selectedEncounter.location !== null ? <h2>Location</h2> : <h2>Location <Link to={`/createencounterlocation/${selectedEncounter.id}`}><Button variant="danger">Create an Encounter Location!</Button></Link></h2>}
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>

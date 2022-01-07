@@ -46,7 +46,7 @@ function App() {
         <Route path="encounter/:id" element={<EncounterPage/>}/>
         <Route exact path="/createencounter" element={<CreateEncounterPage/>}/>
         <Route path="/editencounter" element={<EditEncounterPage/>}/>
-        <Route path="/createencounterlocation" element={<EncounterLocationPage/>}/>
+        <Route path="/createencounterlocation/:id" element={<EncounterLocationPage/>}/>
         <Route path="/createencounteritem" element={<EncounterItemPage/>}/>
         <Route path="/createencounternpc" element={<EncounterNpcPage/>}/>
         <Route path="/createencountermonster" element={<EncounterMonsterPage/>}/>
