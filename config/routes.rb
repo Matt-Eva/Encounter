@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   post '/newencnpc', to: 'npcs#newencnpc'
   post '/newencmonster', to: 'monsters#newencmonster'
   post '/newenclocation', to: 'locations#newenclocation'
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
