@@ -1,9 +1,12 @@
 import { useState } from "react"
 import {CampaignsContext} from "../context/campaignsState"
 import {useContext} from "react";
+import {Form} from "react-bootstrap"
+import {useNavigate} from "react-router-dom"
 
 function EditCampaignForm({campaign}){
     const {campaigns, setCampaigns} = useContext(CampaignsContext)
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         name: campaign.name,
         description: campaign.description,
@@ -40,16 +43,28 @@ function EditCampaignForm({campaign}){
                 image: "",
                 status: "active"
             })
+            navigate("/home")
          })
      }
 
     return(
-        <form onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
-            <input type="text" name="name" value={form.name} placeholder="Campaign Title"/>
-            <input type="text" name="image" value={form.image} placeholder="Campaign Image URL"/>
-            <textarea name="description" value={form.description} placeholder="Campaign Description"/>
-            <button type="submit">Save</button>
-        </form>
+        <Form onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)} >
+            <Form.Group>
+                <Form.Label>Title:</Form.Label>
+                <Form.Control type="text" name="name" value={form.name} placeholder="Campaign Title" style={{"fontSize": "20px"}}/>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Image:</Form.Label>
+                <Form.Control type="text" name="image" value={form.image} placeholder="Campaign Image URL" style={{"fontSize": "20px"}}/>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Description:</Form.Label>
+                <Form.Control as="textarea" name="description" value={form.description} placeholder="Campaign Description" style={{"fontSize": "20px"}}/>
+            </Form.Group>
+            <Form.Group>
+                <Form.Control type="submit"/>
+            </Form.Group>
+        </Form>
     );
 }
 

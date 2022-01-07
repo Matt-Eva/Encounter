@@ -1,19 +1,28 @@
 import LogoutButton from "../userAuth/LogoutButton";
 import EditCampaignForm from "./EditCampaignForm"
 import { EditCampaignContext } from "../context/editCampaignState";
-import HomePageButton from "../home/HomePageButton";
+import Icon from "../home/Icon";
 import {useContext} from "react"
 import {Link} from "react-router-dom";
 import {Row, Container, Col} from "react-bootstrap";
+import parchmentBackground from "../assets/parchmentBackground.jpg"
+
+const backgroundImageStyle = {
+    backgroundImage: `url(${parchmentBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    minHeight: "100vh",
+    minWidth: "100%"
+}
 
 function EditCampaignPage(){
     const {editCampaign} = useContext(EditCampaignContext)
 
     return(
-        <Container>
+        <Container style={backgroundImageStyle}>
             <Row>
                 <Col>
-                <HomePageButton/>
+                <Icon/>
                 </Col>
                 <Col>
                 <h1>Edit {editCampaign.name}</h1>

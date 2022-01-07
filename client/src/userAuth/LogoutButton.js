@@ -8,7 +8,7 @@ function LogoutButton(){
         .then(()=> navigate('/login'))
     }
     return(
-        <Button variant="light" onClick={logout}>Logout</Button>
+        <Button variant="light" className="float-right" onClick={logout}>Logout</Button>
     );
 }
 
