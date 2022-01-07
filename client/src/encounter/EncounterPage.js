@@ -179,7 +179,7 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Monsters <Link to="/createencountermonster"><Button variant="danger">Create a New Monster!</Button></Link></h2>
+                    <h2>Monsters <Link to={`/createencountermonster/${selectedEncounter.id}`}><Button variant="danger">Create a New Monster!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
