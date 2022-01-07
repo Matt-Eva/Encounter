@@ -5,7 +5,7 @@ import {useNavigate, useParams} from "react-router-dom"
 
 function EditCampaignForm({editCampaign, setEditCampaign}){
     const navigate = useNavigate()
-    const enc = useParams()
+    const campaign = useParams()
     const [form, setForm] = useState({
         name: editCampaign.name,
         description: editCampaign.description,
@@ -14,9 +14,10 @@ function EditCampaignForm({editCampaign, setEditCampaign}){
     })
 
     useEffect(() => {
-        fetch(`/encs/${enc.id}`)
+        fetch(`/campaigns/${campaign.id}`)
         .then(r => r.json())
         .then(data => {
+     
             setForm({
                 name: data.name,
                 description: data.description,
