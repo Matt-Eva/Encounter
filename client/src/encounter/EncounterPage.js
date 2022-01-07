@@ -110,11 +110,38 @@ function EncounterPage(){
                     <img src={selectedEncounter.image} style={{"maxWidth": "500px"}}/>
                 </Col>
             </Row>
-            <Row>
-                <Col md={6}>
+            <Row style={{"margin": "10px"}}>
+                <Col>
                     <h2>Notes</h2>
-                    <p>{selectedEncounter.notes}</p>
                 </Col>
+            </Row>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
+                    <p>{selectedEncounter.notes}</p>
+                    </Container>
+                </Col>
+            </Row>
+            {/* Break */}
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <h2>Location</h2>
+                </Col>
+            </Row>
+            <Row style={{"margin": "10px"}}>
+                <Col>
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
+                        <Col>
+                        {selectedEncounter.location ? <div>
+                            <h4>{selectedEncounter.location.name}</h4>
+                            <img src={selectedEncounter.location.image} style={{"maxWidth" : "200px"}}/>
+                            <p>{selectedEncounter.location.description}</p>
+                            </div> : <div><p>Create a location for your encounter and add it!</p>
+                            <Link to="/createencounterlocation"><Button>Create a New Location!</Button></Link>
+                        </div>}
+                        </Col>
+                    </Container>
+                </Col> 
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
@@ -123,12 +150,12 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                         {selectedEncounter.items.length !== 0 ? <ul>{items}</ul> : <p>Create some Items for your encounter and add them here!</p>}
                     </Container>
                 </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                         {displayItem !== null ? displayItem : <p>Once you have created/added an Item, you can click on their name to the left and see its details!</p>}
                     </Container>
                 </Col>    
@@ -140,12 +167,12 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                     {selectedEncounter.npcs.length !== 0 ? <ul>{npcs}</ul> : <p>Create some NPCs for your encounter and add them here!</p>}
                     </Container>
                 </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                         {displayNpc !== null ? displayNpc : <p>Once you have created/added an Npc, you can click on their name to the left and see their details!</p>}
                     </Container>
                 </Col>
@@ -157,29 +184,14 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                         {selectedEncounter.monsters.length !== 0 ? <ul>{monsters}</ul> : <p>Create some monsters for your encounter and add them here!</p>}
                     </Container>
                </Col>
                 <Col>
-                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark overflow-auto">
+                    <Container md={6} style={{"padding": "5px", "height": "300px", "maxWidth": "100%"}} className="border border-dark shadow overflow-auto">
                         {displayMonster !== null ? displayMonster : <p>Once you have created/added an Monster, you can click on their name to the left and see their details!</p>}
                     </Container>
-                </Col>
-            </Row>
-            <Row>
-                <Col md={6}>
-                    <h2>Location</h2>
-                    {selectedEncounter.location ? <div>
-                        <h4>{selectedEncounter.location.name}</h4>
-                        <img src={selectedEncounter.location.image} style={{"maxWidth" : "200px"}}/>
-                        <p>{selectedEncounter.location.description}</p>
-                        </div> : <div><p>Create a location for your encounter and add it!</p>
-                        <Link to="/createencounterlocation"><Button>Create a New Location!</Button></Link>
-                    </div>}
-                </Col>
-                <Col md={6}>
-                    <p>Interactive window that displays the location card in detail</p>
                 </Col>
             </Row>
         </Container>
