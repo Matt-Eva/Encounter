@@ -81,7 +81,7 @@ function CampaignPage(){
                     <h5>{selectedCampaign.description}</h5>
                 </Col>
                 <Col sm={4} >
-                    <img src={selectedCampaign.image} alt="picture of campaign image" className="img-fluid" style={{"maxWidth": "500px"}}/>
+                    <img src={selectedCampaign.image} alt="picture of campaign image" className="img-fluid" style={{"maxWidth": "500px", "maxHeight": "500px"}}/>
                 </Col>
             </Row>
             <Row>
