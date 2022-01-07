@@ -42,7 +42,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/campaign/:id" element={<CampaignPage/>}/>
         <Route path="/createcampaign" element={<CreateCampaignPage/>}/>
-        <Route path="/editcampaign" element={<EditCampaignPage/>}/>
+        <Route path="/editcampaign/:id" element={<EditCampaignPage/>}/>
         <Route path="encounter/:id" element={<EncounterPage/>}/>
         <Route exact path="/createencounter" element={<CreateEncounterPage/>}/>
         <Route path="/editencounter" element={<EditEncounterPage/>}/>

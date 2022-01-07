@@ -1,18 +1,31 @@
-import { useState } from "react"
+import { useState, useContext, useEffect } from "react"
 import {CampaignsContext} from "../context/campaignsState"
-import {useContext} from "react";
 import {Form} from "react-bootstrap"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 
-function EditCampaignForm({campaign}){
-    const {campaigns, setCampaigns} = useContext(CampaignsContext)
+function EditCampaignForm({editCampaign, setEditCampaign}){
     const navigate = useNavigate()
+    const enc = useParams()
     const [form, setForm] = useState({
-        name: campaign.name,
-        description: campaign.description,
-        image: campaign.image,
-        status: campaign.status
+        name: editCampaign.name,
+        description: editCampaign.description,
+        image: editCampaign.image,
+        status: editCampaign.status
     })
+
+    useEffect(() => {
+        fetch(`/encs/${enc.id}`)
+        .then(r => r.json())
+        .then(data => {
+            setForm({
+                name: data.name,
+                description: data.description,
+                image: data.image,
+                status: data.status
+            })
+            setEditCampaign(data)
+        })
+    }, [])
 
     function handleChange(e){
         setForm({
@@ -32,11 +45,10 @@ function EditCampaignForm({campaign}){
             body: JSON.stringify(newC)
          }
 
-         fetch(`/campaigns/${campaign.id}`, configObj)
+         fetch(`/campaigns/${editCampaign.id}`, configObj)
          .then(r => r.json())
          .then(data =>{
              console.log(data)
-             setCampaigns([...campaigns, data])
              setForm({
                 name:"",
                 description: "",

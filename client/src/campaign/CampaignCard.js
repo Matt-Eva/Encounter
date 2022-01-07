@@ -83,7 +83,7 @@ function CampaignCard({campaign}){
         <Row>
             <Col>
                 <Link to={`/campaign/${campaign.id}`}><Button style={buttonStyle} variant="danger" onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
-                <Link to="/editcampaign"><Button style={buttonStyle} variant="danger" onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
+                <Link to={`/editcampaign/${campaign.id}`}><Button style={buttonStyle} variant="danger" onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
                 {status === "active"? <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Archive</Button> : <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Reactivate</Button>}
                 <Button style={buttonStyle} variant="danger" onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
             </Col>
