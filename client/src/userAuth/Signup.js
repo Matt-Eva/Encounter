@@ -76,7 +76,7 @@ function Signup(){
    return(
        <Container className="mw-100">
            <Row>
-               <Col sm={9} md={7} lg={5} xl={3} style={formBackgroundStyle} className="vh-100">
+               <Col sm={9} md={6} lg={6} xl={3} style={formBackgroundStyle} className="vh-100">
                    <h1>D&D: Encounter</h1>
                    <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
                        <Form.Group>

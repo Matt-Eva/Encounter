@@ -126,7 +126,7 @@ function EncounterPage(){
             {/* Break */}
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    {selectedEncounter.location !== null ? <h2>Location</h2> : <h2>Location <Link to="/createencounterlocation"><Button variant="danger">Create an Encounter Location!</Button></Link></h2>}
+                    {selectedEncounter.location !== null ? <h2>Location</h2> : <h2>Location <Link to={`/createencounterlocation/${selectedEncounter.id}`}><Button variant="danger">Create an Encounter Location!</Button></Link></h2>}
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
@@ -145,7 +145,7 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Items <Link to="/createencounteritem"><Button variant="danger">Create a New Item!</Button></Link></h2>
+                    <h2>Items <Link to={`/createencounteritem/${selectedEncounter.id}`}><Button variant="danger">Create a New Item!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
@@ -162,7 +162,7 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Npcs <Link to="/createencounternpc"><Button variant="danger">Create a New NPC!</Button></Link></h2>
+                    <h2>Npcs <Link to={`/createencounternpc/${selectedEncounter.id}`}><Button variant="danger">Create a New NPC!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
@@ -179,7 +179,7 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <h2>Monsters <Link to="/createencountermonster"><Button variant="danger">Create a New Monster!</Button></Link></h2>
+                    <h2>Monsters <Link to={`/createencountermonster/${selectedEncounter.id}`}><Button variant="danger">Create a New Monster!</Button></Link></h2>
                 </Col>
             </Row>
             <Row style={{"margin": "10px"}}>
