@@ -4,10 +4,10 @@ import {useContext, useEffect, useState} from "react"
 import {useParams, Link} from "react-router-dom"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import Icon from "../home/Icon";
-import paperBackground from '../assets/paperBackground.jpg'
+import parchmentBackground from '../assets/parchmentBackground.jpg'
 
 const backgroundImageStyle = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     minHeight: "100vh"

@@ -4,6 +4,16 @@ import {useContext} from "react"
 import {SelectedEncounterContext} from "../context/selectedEncounterState.js"
 import {EditEncounterContext} from "../context/editEncounterState";
 import { EncountersContext } from "../context/encountersState";
+import cardBackground from "../assets/cardBackground.jpg"
+
+const cardStyle = {
+    backgroundImage: `url(${cardBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: "300px",
+    height: "500px", 
+    padding: "10px"
+}
 
 const buttonStyle = { 
     margin: "5px"
@@ -51,7 +61,7 @@ function EncounterCard({id, name, handleDelete, status, image, encounter}){
 
 
     return(
-        <Card style={{"height": "auto", "width": 300}}>
+        <Card style={cardStyle} className="border border-dark">
             <img src={image} alt="Image of the encounter" className="card-img-top"/>
             <Card.Title>
                 {name}
