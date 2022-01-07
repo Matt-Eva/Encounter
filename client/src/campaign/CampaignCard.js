@@ -4,11 +4,11 @@ import {CampaignsContext} from "../context/campaignsState";
 import {EditCampaignContext} from "../context/editCampaignState"
 import {useContext, useState} from "react"
 import {Button, Card, Row, Col, Container} from "react-bootstrap";
-import paperBackground from '../assets/paperBackground.jpg'
+import cardBackground from '../assets/cardBackground.jpg'
 
 
 const cardStyle = {
-    backgroundImage: `url(${paperBackground})`,
+    backgroundImage: `url(${cardBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     width: "300px",
@@ -71,7 +71,7 @@ function CampaignCard({campaign}){
     }
 
     return(
-        <Card style={cardStyle}>
+        <Card style={cardStyle} className="border border-dark">
             <Card.Img src={image} alt="Image of the encounter" className="card-img-top img-fluid overflow-hidden border border-dark"/>
         <Card.Body>
         <Card.Title>
