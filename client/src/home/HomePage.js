@@ -15,7 +15,8 @@ import Filter from "./Filter";
 const backgroundImageStyle = {
     backgroundImage: `url(${parchmentBackground})`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    padding: "10px"
 }
 
 function HomePage(){
@@ -55,15 +56,15 @@ function HomePage(){
 
     return(
         <Container style={backgroundImageStyle} className="mw-100 vh-100">
-            <Row className="justify-content-center">
-                <Col className="text-center">
+            <Row className="justify-content-center" style={{"marginBottom": "20px"}}>
+                <Col style={{"textAlign": "left"}}>
                     <Icon/>
                 </Col>
                 <Col className="text-center">
                    <h1>Encounter</h1>
                    <h5>Welcome, {user.dm_name}</h5>
                 </Col>
-                <Col className="text-center">
+                <Col style={{"textAlign": "right"}}>
                     <LogoutButton/>
                 </Col> 
             </Row>

@@ -3,9 +3,20 @@ import {UserContext} from "../context/userState";
 import { useContext, useState } from "react";
 import LogoutButton from "../userAuth/LogoutButton";
 import Icon from "../home/Icon";
+import CreateEncounterForm from "./CreateEncounterForm";
 import { SelectedCampaignContext } from "../context/selectedCampaignState";
 import { EncountersContext } from "../context/encountersState";
 import { useNavigate } from "react-router-dom"
+
+import parchmentBackground from "../assets/parchmentBackground.jpg"
+
+const backgroundImageStyle = {
+    backgroundImage: `url(${parchmentBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    minHeight: "100vh",
+    minWidth: "100%"
+}
 
 
 function CreateEncounterPage(){
@@ -66,42 +77,21 @@ function CreateEncounterPage(){
     }
 
     return(
-        <Container>
+        <Container style={backgroundImageStyle}>
             <Row>
                 <Col>
                     <Icon/>
-                    Menu
                 </Col>
-                <Col>
-                   Encounter<br/>
-                   Welcome {user.dm_name}
+                <Col style={{"textAlign": "center"}}>
+                   <h1 style={{"cursor": "pointer"}} onClick={() =>navigate(`/campaign/${selectedCampaign.id}`)}>{selectedCampaign.name}:</h1>
+                   <h2>Create a New Encounter</h2>
                 </Col>
-                <Col>
+                <Col style={{"textAlign": "right"}}>
                     <LogoutButton/>
                 </Col> 
             </Row>
             <Row>
-                <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, newEncounter)}>
-                    <Form.Group>
-                        <Form.Label>Encounter Title:</Form.Label>
-                        <Form.Control type="text" name="name" value={newEncounter.name} placeholder="Choose your encounter's title!" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Description:</Form.Label>
-                        <Form.Control type="text" name="description" value={newEncounter.description} placeholder="A brief description of the encounter." />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Image:</Form.Label>
-                        <Form.Control type="text" name="image" value={newEncounter.image} placeholder="Input image link." />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Notes:</Form.Label>
-                        <Form.Control type="text" name="notes" value={newEncounter.notes} placeholder="Any checks/things to note?" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control type="submit" />
-                    </Form.Group>
-                </Form>
+                <CreateEncounterForm handleSubmit={handleSubmit} handleChange={handleChange} newEncounter={newEncounter}/>
             </Row>
         </Container>
     );
