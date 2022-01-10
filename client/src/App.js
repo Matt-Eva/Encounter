@@ -27,7 +27,6 @@ function App() {
       if (response.ok){
         response.json().then((user) => {
           setUser(user)
-          // navigate("/home")
         })
       } else{
         navigate("/login")
@@ -50,7 +49,7 @@ function App() {
         <Route path="/createencounteritem/:id" element={<EncounterItemPage/>}/>
         <Route path="/createencounternpc/:id" element={<EncounterNpcPage/>}/>
         <Route path="/createencountermonster/:id" element={<EncounterMonsterPage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
+        <Route exact path="/" element={<HomePage/>}/>
       </Routes>
     </div>
   );

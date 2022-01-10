@@ -63,7 +63,7 @@ function Signup(){
                 r.json().then(data => {
                     setUser(data)
                     console.log(data)
-                    navigate("/home")
+                    navigate("/")
                 })
             } else{
                 r.json().then(data => {

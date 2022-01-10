@@ -10,7 +10,7 @@ const imgStyle={
 
 function Icon() {
     return (
-        <Link to="/home"><Image className="rounded-circle" src={dragonIcon} style={imgStyle}/></Link>
+        <Link to="/"><Image className="rounded-circle" src={dragonIcon} style={imgStyle}/></Link>
     )
 }
 

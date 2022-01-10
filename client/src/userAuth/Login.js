@@ -55,7 +55,7 @@ function Login(){
             if (r.ok){
                 r.json().then(data => {
                     setUser(data)
-                    navigate("/home")
+                    navigate("/")
                 })
             } else{
                 r.json().then(data => {
