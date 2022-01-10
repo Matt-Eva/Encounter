@@ -30,7 +30,7 @@ function HomePage(){
     const [selected, setSelected] = useState("all")
 
     useEffect(() =>{
-        if (user.id !== 0) {
+        if(user.id !== 0){
             fetch("/campaigns")
             .then(r => r.json())
             .then(data =>{
