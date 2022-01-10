@@ -42,7 +42,7 @@ function CreateCampaignForm(){
                 image: "",
                 status: "active"
             })
-            navigate("/home")
+            navigate("/")
          })
      }
 

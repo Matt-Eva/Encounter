@@ -30,12 +30,14 @@ function HomePage(){
     const [selected, setSelected] = useState("all")
 
     useEffect(() =>{
-        fetch("/campaigns")
-        .then(r => r.json())
-        .then(data =>{
-            setCampaigns(data)
-        })
-    }, [])
+        if(user.id !== 0){
+            fetch("/campaigns")
+            .then(r => r.json())
+            .then(data =>{
+                setCampaigns(data)
+            })
+        }
+    }, [user])
 
     function create(){
         setEditCampaign(null)

@@ -56,7 +56,7 @@ function EditCampaignForm({editCampaign, setEditCampaign}){
                 image: "",
                 status: "active"
             })
-            navigate("/home")
+            navigate("/")
          })
      }
 
