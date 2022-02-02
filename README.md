@@ -7,6 +7,7 @@ This project uses the following technologies:
 - Frontend: React.js with Bootstrap v5 and custom CSS
 - Backend: Ruby on Rails, Postgresql, ActiveRecord
 - Deployed on Heroku at https://encounterdnd.herokuapp.com/
+- Video Demo: https://youtu.be/F54RhgqaASo
 
 ## Launch
 Either visit https://encounterdnd.herokuapp.com/
