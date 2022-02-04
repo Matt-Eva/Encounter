@@ -7,6 +7,7 @@ import { useContext, useState } from "react"
 import { UserContext } from "../context/userState"
 
 const formBackgroundStyle = {
+    minHeight: "100vh",
     backgroundImage: `url(${paperBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
@@ -74,11 +75,11 @@ function Signup(){
         })
     }
    return(
-       <Container className="mw-100">
+       <Container fluid>
            <Row>
-               <Col sm={9} md={6} lg={6} xl={3} style={formBackgroundStyle} className="vh-100">
+               <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={3} style={formBackgroundStyle} >
                    <h1>D&D: Encounter</h1>
-                   <Form style={{"width": "23rem"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
+                   <Form style={{"overflow": "auto"}} onChange={handleChange} onSubmit={(e) => handleSubmit(e, form)}>
                        <Form.Group>
                            <Form.Label>Username:</Form.Label>
                            <Form.Control type="text" name="username" placeholder="Enter your username here." value={form.username}/>
@@ -103,7 +104,7 @@ function Signup(){
                    {errors ? displayErrors: null }
                    <Link style={{"color": "black"}} to="/login">Already have an account? Login.</Link>
                </Col>
-               <Col style={backgroundImageStyle}>
+               <Col style={backgroundImageStyle} xs={8} sm={8} md={8} lg={8} xl={8} xxl={9}>
                </Col>
            </Row>
        </Container>
