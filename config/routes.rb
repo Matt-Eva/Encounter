@@ -27,5 +27,9 @@ Rails.application.routes.draw do
   post '/newencnpc', to: 'npcs#newencnpc'
   post '/newencmonster', to: 'monsters#newencmonster'
   post '/newenclocation', to: 'locations#newenclocation'
+
+  post "/forgotpassword", to: "passwords#forgot"
+  post "/resetpassword", to: "passwords#reset"
+
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
