@@ -17,7 +17,9 @@ const cardStyle = {
 }
 
 const buttonStyle = { 
-    margin: "5px"
+    margin: "5px",
+    cursor: "pointer",
+    color: "black"
 }
 
 function CampaignCard({campaign}){
@@ -81,11 +83,16 @@ function CampaignCard({campaign}){
             Status: {status}
         </Card.Text>
         <Row>
+            <Col className="d-flex">
+                <Link style={{"textDecoration": "none"}} to={`/campaign/${campaign.id}`}><h5 style={buttonStyle} variant="danger" onClick={() => setSelectedCampaign(campaign)}>View</h5></Link>
+                <Link style={{"textDecoration": "none"}} to={`/editcampaign/${campaign.id}`}><h5 style={buttonStyle} variant="danger" onClick={() => setEditCampaign(campaign)}>Edit</h5></Link>
+                {status === "active"? <h5 style={buttonStyle} variant="danger" onClick={toggleStatus}>Archive</h5> : <h5 style={buttonStyle} variant="danger" onClick={toggleStatus}>Reactivate</h5>}
+                
+            </Col>
+        </Row>
+        <Row className="mt-2">
             <Col>
-                <Link to={`/campaign/${campaign.id}`}><Button style={buttonStyle} variant="danger" onClick={() => setSelectedCampaign(campaign)}>View</Button></Link>
-                <Link to={`/editcampaign/${campaign.id}`}><Button style={buttonStyle} variant="danger" onClick={() => setEditCampaign(campaign)}>Edit</Button></Link>
-                {status === "active"? <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Archive</Button> : <Button style={buttonStyle} variant="danger" onClick={toggleStatus}>Reactivate</Button>}
-                <Button style={buttonStyle} variant="danger" onClick={() => deleteCampaign(campaign.id)}>Delete</Button>
+                <h5 style={buttonStyle}  onClick={() => deleteCampaign(campaign.id)}>Discard</h5>
             </Col>
         </Row>
         </Card.Body>
