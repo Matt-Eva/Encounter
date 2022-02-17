@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import {Form, Container, Col, Row, Button} from "react-bootstrap"
+import { Navigate } from 'react-router-dom';
 
 function ForgotPassword() {
     const [form, setForm ] = useState({
         email: ""
     })
+    const navigate = useNavigate()
 
     function handleChange(e){
         setForm({
@@ -25,10 +27,13 @@ function ForgotPassword() {
              },
              body: JSON.stringify(userPost)
          }
-         fetch('/login', configObj)
-         .then(r => {
-             if(r.ok){}
+         fetch('/forgotpassword', configObj)
+         .then(r => r.json())
+         .then(data => {
+             alert(data.alert)
+             navigate('/login')
          })
+         .catch(console.log)
      }
 
   return (
