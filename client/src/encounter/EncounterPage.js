@@ -118,8 +118,8 @@ function EncounterPage(){
             </Row>
             <Row style={{"margin": "10px"}}>
                 <Col>
-                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} className="border border-dark shadow overflow-auto">
-                        <p style={{"fontSize": "26px"}}>{selectedEncounter.notes}</p>
+                    <Container style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }} style={{"padding": "5px", "height": "300px", "maxWidth": "100%", "backgroundSize" : "cover", "backgroundRepeat" : "no-repeat", "backgroundImage": `url(${cardBackground})` }}>
+                        <p style={{"fontSize": "26px"}} contenteditable='true'>{selectedEncounter.notes}</p>
                     </Container>
                 </Col>
             </Row>
