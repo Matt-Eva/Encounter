@@ -15,6 +15,7 @@ Either visit https://encounterdnd.herokuapp.com/
 Launch backend
 ```
 $ bundle install
+$ bin/rails db:create
 $ rails db:migrate
 $ rails db:seed
 $ rails s
